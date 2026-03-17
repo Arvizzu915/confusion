@@ -24,6 +24,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer, objectMask;
     [SerializeField] private Transform groundCheckOrigin;
 
+    [Header("Crouching Settings")]
+    [SerializeField] float standingHeight = 2f;
+    [SerializeField] float crouchingHeight = 1f;
+
+
+    [SerializeField] Vector3 standingCenter = new(0, 1f, 0);
+    [SerializeField] Vector3 crouchingCenter = new(0, 0.5f, 0);
+
+    [SerializeField] float crouchSpeed = 1.5f;
+
+    float targetHeight = 0;
+    Vector3 targetCenter = Vector3.zero;
+
+    bool isCrouching = false;
+
     //Inputs
     public PlayerInput inputs;
 
@@ -40,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         inputManager.inputs.Playing.Jump.started += Jump;
 
         inputManager.inputs.Playing.Run.started += Run;
+
+        inputManager.inputs.Playing.Crouch.started += ctx => SetCrouch(true);
+        inputManager.inputs.Playing.Crouch.canceled += ctx => SetCrouch(false);
     }
 
 
@@ -58,6 +76,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * 10f);
+        controller.center = Vector3.Lerp(controller.center, targetCenter, Time.deltaTime * 10f);
+
         if (running)
         {
             currentSpeed = normalSpeed * 2.5f;
@@ -114,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerManager.playerAnim.SetTrigger("Running", true);
     }
 
+
     private void CheckGround()
     {
         if (groundCheckOrigin == null)
@@ -125,6 +147,42 @@ public class PlayerMovement : MonoBehaviour
             out _,
             sphereDistance,
             groundLayer + objectMask
+        );
+    }
+
+    private void SetCrouch(bool crouch)
+    {
+        if (crouch)
+        {
+            targetHeight = crouchingHeight;
+            targetCenter = crouchingCenter;
+            currentSpeed = crouchSpeed;
+            isCrouching = true;
+        }
+        else
+        {
+            if (!CanStand()) return;
+
+            targetHeight = standingHeight;
+            targetCenter = standingCenter;
+            currentSpeed = normalSpeed;
+            isCrouching = false;
+        }
+
+        PlayerManager.instance.cameraLook.ChangePosition(isCrouching);
+    }
+
+    bool CanStand()
+    {
+        float checkDistance = standingHeight - crouchingHeight;
+
+        return !Physics.SphereCast(
+            transform.position,
+            controller.radius,
+            Vector3.up,
+            out _,
+            checkDistance,
+            groundLayer
         );
     }
 

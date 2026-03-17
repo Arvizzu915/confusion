@@ -12,4 +12,6 @@ public class CameraHolder : MonoBehaviour
         Camera.main.transform.SetPositionAndRotation(cameraHolder.position, cameraHolder.rotation);
         Camera.main.transform.SetParent(cameraHolder);
     }
+
+    
 }

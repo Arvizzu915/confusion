@@ -4342,6 +4342,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849306342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6227326001795522507, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+  m_PrefabInstance: {fileID: 2129192758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a71916d9b844a48874600e9f289c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1886456507
 GameObject:
   m_ObjectHideFlags: 0
@@ -5179,6 +5190,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1972519131183842611, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2915987333156741553, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
       propertyPath: m_LocalScale.y
       value: 2
@@ -5223,13 +5238,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2930521188957889891, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2930521188957889891, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2973578300939043500, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
       propertyPath: m_Name
       value: SinglePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3971757621613031277, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4683173347336126882, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
       propertyPath: sphereDistance
       value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683173347336126882, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: crouchingHeight
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683173347336126882, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: standingCenter.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4683173347336126882, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: crouchingCenter.y
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4683173347336126882, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
       propertyPath: groundLayer.m_Bits
@@ -5243,6 +5282,10 @@ PrefabInstance:
       propertyPath: sensibilityY
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 8033320520717661402, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
+      propertyPath: cameraLook
+      value: 
+      objectReference: {fileID: 1849306342}
     - target: {fileID: 8033320520717661402, guid: fe6f7f6cd0a37604c9360617a44a66d2, type: 3}
       propertyPath: playerCombat
       value: 

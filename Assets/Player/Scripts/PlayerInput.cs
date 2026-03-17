@@ -163,6 +163,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""a1f99dd1-3aef-4faf-b003-5490836c75cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -297,6 +306,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Attack2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20d6798e-490b-479f-92f6-abac7c7ef93f"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -313,6 +333,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Playing_Interact = m_Playing.FindAction("Interact", throwIfNotFound: true);
         m_Playing_Attack1 = m_Playing.FindAction("Attack1", throwIfNotFound: true);
         m_Playing_Attack2 = m_Playing.FindAction("Attack2", throwIfNotFound: true);
+        m_Playing_Crouch = m_Playing.FindAction("Crouch", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -401,6 +422,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_Interact;
     private readonly InputAction m_Playing_Attack1;
     private readonly InputAction m_Playing_Attack2;
+    private readonly InputAction m_Playing_Crouch;
     /// <summary>
     /// Provides access to input actions defined in input action map "Playing".
     /// </summary>
@@ -444,6 +466,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Playing/Attack2".
         /// </summary>
         public InputAction @Attack2 => m_Wrapper.m_Playing_Attack2;
+        /// <summary>
+        /// Provides access to the underlying input action "Playing/Crouch".
+        /// </summary>
+        public InputAction @Crouch => m_Wrapper.m_Playing_Crouch;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -494,6 +520,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack2.started += instance.OnAttack2;
             @Attack2.performed += instance.OnAttack2;
             @Attack2.canceled += instance.OnAttack2;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
         }
 
         /// <summary>
@@ -529,6 +558,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Attack2.started -= instance.OnAttack2;
             @Attack2.performed -= instance.OnAttack2;
             @Attack2.canceled -= instance.OnAttack2;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
         }
 
         /// <summary>
@@ -625,5 +657,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Crouch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCrouch(InputAction.CallbackContext context);
     }
 }

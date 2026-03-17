@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerInput",
     "maps": [
         {
@@ -72,6 +73,15 @@
                     "name": "Attack2",
                     "type": "Button",
                     "id": "3caec414-d0ff-4598-9d8c-094f6fa414b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Button",
+                    "id": "a1f99dd1-3aef-4faf-b003-5490836c75cc",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -208,6 +218,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20d6798e-490b-479f-92f6-abac7c7ef93f",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

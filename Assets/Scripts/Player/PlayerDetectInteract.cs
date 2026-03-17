@@ -9,7 +9,7 @@ public class PlayerDetectInteract : MonoBehaviour
     private IInteractuable currentInteractable = null;
     [SerializeField] private LayerMask detectLayer;
 
-    private void OnEnable()
+    private void Start()
     {
         inputManager.inputs.Playing.Interact.performed += Interact;
     }
