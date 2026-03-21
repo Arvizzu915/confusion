@@ -6,8 +6,9 @@ public class PlayerDetectInteract : MonoBehaviour
     [SerializeField] private InputManager inputManager;
 
     [SerializeField] private PlayerManager playerManager;
-    private IInteractuable currentInteractable = null;
+    private Interactuable currentInteractable = null;
     [SerializeField] private LayerMask detectLayer;
+    [SerializeField] private float detectRayLength = 3.5f;
 
     private void Start()
     {
@@ -21,24 +22,25 @@ public class PlayerDetectInteract : MonoBehaviour
 
     void Update()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 2f, detectLayer))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, detectRayLength))
         {
-            if (hit.transform.TryGetComponent(out IInteractuable interactable))
+
+            if (hit.transform.TryGetComponent(out Interactuable interactable))
             {
-                Debug.DrawRay(transform.position, transform.forward * 2, Color.green);
+                Debug.DrawRay(transform.position, transform.forward * detectRayLength, Color.green);
                 currentInteractable = interactable;
-                interactable.Hover(playerManager.PlayerUIManager);
+                interactable.Hover();
             }
             else
             {
-                Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
+                Debug.DrawRay(transform.position, transform.forward * detectRayLength, Color.red);
                 currentInteractable = null;
                 playerManager.PlayerUIManager.CanInteract(false, "");
             }
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
+            Debug.DrawRay(transform.position, transform.forward * detectRayLength, Color.red);
             currentInteractable = null;
             playerManager.PlayerUIManager.CanInteract(false, "");
         }
@@ -47,6 +49,9 @@ public class PlayerDetectInteract : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext ctx)
     {
-        currentInteractable?.Interact(playerManager);
+        if (currentInteractable != null)
+        {
+            currentInteractable.Interact(playerManager);
+        }
     }
 }

@@ -1,15 +1,10 @@
 using UnityEngine;
 
-public class ObjectManager : MonoBehaviour, IInteractuable
+public class ObjectManager : Interactuable
 {
     [SerializeField] WeaponSO weaponSO;
 
-    public void Hover(PlayerUIManager UIManager)
-    {
-        UIManager.CanInteract(true, "Equip");
-    }
-
-    public void Interact(PlayerManager player)
+    public override void Interact(PlayerManager player)
     {
         weaponSO.GetEquipped(player);
         gameObject.SetActive(false);

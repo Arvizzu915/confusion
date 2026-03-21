@@ -1,8 +1,16 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-public interface IInteractuable
+public abstract class Interactuable : MonoBehaviour
 {
-    public void Interact(PlayerManager player);
+    [SerializeField] private string interactText = "Interact";
+    public bool canInteract = true;
 
-    public void Hover(PlayerUIManager UIManager);
+    public abstract void Interact(PlayerManager player);
+
+
+    public virtual void Hover()
+    {
+        PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, interactText);
+    }
 }
