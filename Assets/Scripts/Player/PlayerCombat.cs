@@ -19,6 +19,11 @@ public class PlayerCombat : MonoBehaviour
         inputManager.inputs.Playing.Attack1.performed -= UseWeapon;
     }
 
+    private void Update()
+    {
+        currentWeaponSO.WeaponUpdate(this, playerManager);
+    }
+
     public void EquipWeapon(GameObject weapon, WeaponSO newWeaponSO)
     {
         currentWeaponSO = newWeaponSO;
