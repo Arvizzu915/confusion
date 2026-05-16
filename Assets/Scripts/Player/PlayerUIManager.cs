@@ -14,6 +14,12 @@ public class PlayerUIManager : MonoBehaviour
        if (levelCanvas == null) return;
 
        levelCanvas.interactableText.gameObject.SetActive(isInteractable);
-       levelCanvas.interactableText.text = "\"E\" to " + interactMode;
+       levelCanvas.interactableText.text = "[F] to " + interactMode;
+    }
+
+    public void ActivateCheckingObjectText(bool checking)
+    {
+        levelCanvas.checkingObjText.gameObject.SetActive(checking);
+        
     }
 }

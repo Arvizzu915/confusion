@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class Interactuable : MonoBehaviour
 {
     [SerializeField] private string interactText = "Interact";
-    public bool canInteract = true;
+    public bool canInteract = true, inspectable = false;
 
     public abstract void Interact(PlayerManager player);
 

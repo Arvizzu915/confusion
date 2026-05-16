@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 988ddcf4ca1a9f543aec3c46b5fb338a, type: 3}
+  m_Name: NomalBow
+  m_EditorClassIdentifier: Assembly-CSharp::BowSO
+  weaponGO: {fileID: 256092987832013173, guid: 5497b6a5e72fbc542af276139c70308e, type: 3}
+  holdingTimeLimit: 0.5
+  shootForce: 300

@@ -4,6 +4,6 @@ using UnityEngine;
 public class LevelCanvas : MonoBehaviour
 {
     public GameObject HUDPanel;
-    public TextMeshProUGUI interactableText;
+    public TextMeshProUGUI interactableText, checkingObjText;
 
 }

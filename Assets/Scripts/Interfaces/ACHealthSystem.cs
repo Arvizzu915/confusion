@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ACHealthSystem : MonoBehaviour, IDamageable
+public class ACHealthSystem : MonoBehaviour
 {
     public EnemyManager enemyManager;
     private Animator animator;

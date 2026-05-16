@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public abstract class WeaponSO : ScriptableObject
+public abstract class BowSO : ScriptableObject
 {
     [SerializeField] GameObject weaponGO;
-
-    public int damage = 1;
 
     public void GetEquipped(PlayerManager player)
     {

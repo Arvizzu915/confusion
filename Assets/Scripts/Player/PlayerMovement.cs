@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerManager PlayerManager;
     public InputManager inputManager;
 
-    [SerializeField] public CharacterController controller;
+    public CharacterController controller;
     [SerializeField] private float currentSpeed, normalSpeed = 3, runningSpeed = 7, crouchingSpeed = 1.5f;
     [SerializeField] private float gravity = -10f;
 
@@ -31,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Vector3 standingCenter = new(0, 1f, 0);
     [SerializeField] Vector3 crouchingCenter = new(0, 0.5f, 0);
-
-    [SerializeField] float crouchSpeed = 1.5f;
 
     float targetHeight = 2;
     Vector3 targetCenter = new(0, 1f, 0);
@@ -64,10 +62,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void OnEnable()
-    {
-        
-    }
 
     private void OnDisable()
     {
@@ -88,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = runningSpeed;
         }
 
-        if (move.ReadValue<Vector2>().y <= .2)
+        if (move.ReadValue<Vector2>().y <= .2 && !isCrouching)
         {
             running = false;
             currentSpeed = normalSpeed;
@@ -161,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
             currentSpeed = crouchingSpeed;
             targetHeight = crouchingHeight;
             targetCenter = crouchingCenter;
-            currentSpeed = crouchSpeed;
             isCrouching = true;
             running = false;
         }
@@ -211,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
         // Optional: don't push downward
         if (hit.moveDirection.y < -0.3f) return;
 
-        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        Vector3 pushDir = new(hit.moveDirection.x, 0, hit.moveDirection.z);
 
         float pushForce = .5f;
 

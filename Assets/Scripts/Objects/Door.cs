@@ -55,7 +55,9 @@ public class Door : Interactuable
         isOpen = true;
         openTimer = 0f;
 
+        
         rb.isKinematic = false;
+        rb.linearVelocity = Vector3.zero;
 
         // Disable spring so it's free
         var spring = hinge.spring;
@@ -79,6 +81,7 @@ public class Door : Interactuable
 
         isOpen = false;
 
+        rb.linearVelocity = Vector3.zero;
         rb.isKinematic = false; // keep physics active
 
         var spring = hinge.spring;
