@@ -16,7 +16,7 @@ public class PlayerDetectInteract : MonoBehaviour
     [HideInInspector] public bool checkingObject = false;
     [HideInInspector] public KeyPiece currentKeyPiece = null;
     public Transform inspectPoint;
-    public GameObject inspectCamera, zoomCamera, inspectLight;
+    public GameObject inspectCamera, zoomCamera, inspectLight, lantern, bow;
 
     private bool zooming = false;
 
@@ -84,9 +84,7 @@ public class PlayerDetectInteract : MonoBehaviour
             currentInteractable.Interact(playerManager);
             if (currentInteractable.inspectable)
             {
-                playerManager.inputManager.SwitchToInspect();
                 checkingObject = true;
-                inspectCamera.SetActive(true);
             }
         }
     }
@@ -104,6 +102,7 @@ public class PlayerDetectInteract : MonoBehaviour
             inspectLight.SetActive(false);
             inspectCamera.SetActive(false);
             zoomCamera.SetActive(false);
+            lantern.SetActive(true);
         }
     }
 

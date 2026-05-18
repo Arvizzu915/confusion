@@ -33,6 +33,10 @@ public class KeyPiece : Interactuable
 
     private void CheckObject()
     {
+        PlayerManager.instance.inputManager.SwitchToInspect();
+
+        PlayerDetectInteract.instance.inspectCamera.SetActive(true);
+
         StartCoroutine(MoveToInspectPoint(PlayerDetectInteract.instance.inspectPoint));
         StartCoroutine(TurnOnInspectLight());
 
@@ -42,7 +46,8 @@ public class KeyPiece : Interactuable
 
         interactScript.currentKeyPiece = this;
 
-        interactScript.currentKeyPiece = this;
+        interactScript.lantern.SetActive(false);
+
         Time.timeScale = 0;
 
         PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(true);
@@ -53,6 +58,8 @@ public class KeyPiece : Interactuable
 
     public void TakeObject()
     {
+        
+
         PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(false);
 
         interactScript = PlayerDetectInteract.instance;
