@@ -3,8 +3,15 @@ using UnityEngine;
 
 public class LevelCanvas : MonoBehaviour
 {
+    public static LevelCanvas instance;
+
     public GameObject HUDPanel, inspectingPanel;
     public TextMeshProUGUI interactableText, checkingObjText;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void ChangeToInspectHUD()
     {

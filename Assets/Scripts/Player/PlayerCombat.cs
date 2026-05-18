@@ -18,6 +18,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Aim")]
     public Vector3 aimingDirection;
     public bool canShoot = true;
+    [SerializeField] private LayerMask detectLayer;
 
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float aimDistance = 100f;
@@ -47,16 +48,12 @@ public class PlayerCombat : MonoBehaviour
 
         Vector3 targetPoint;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, aimDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, aimDistance, detectLayer))
         {
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
-
             targetPoint = hit.point;
         }
         else
         {
-            Debug.DrawRay(ray.origin, ray.direction * aimDistance, Color.red);
-
             targetPoint = ray.origin + ray.direction * aimDistance;
         }
 

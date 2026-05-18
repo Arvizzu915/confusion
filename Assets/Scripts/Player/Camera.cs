@@ -11,7 +11,7 @@ public class CameraLook : MonoBehaviour
     private float xRotation, yRotation;
 
     [SerializeField] private float crouchingHeight = 0, standingHeight = 0.5f;
-    private float targetHeigth = 1.5f;
+    private float targetHeight = 1.5f;
 
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -36,32 +36,36 @@ public class CameraLook : MonoBehaviour
         PlayerManager.instance.inputManager.inputs.Playing.ChangeSens.performed -= ChangeSensibility;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, targetHeigth, transform.localPosition.z), Time.deltaTime * 10f);
+        transform.localPosition = Vector3.Lerp(
+            transform.localPosition,
+            new Vector3(transform.localPosition.x, targetHeight, transform.localPosition.z),
+            Time.deltaTime * 10f
+        );
 
-        float mouseX = Look.ReadValue<Vector2>().x * Time.deltaTime * sensibilityX;
-        float mouseY = Look.ReadValue<Vector2>().y * Time.deltaTime * sensibilityY;
+        Vector2 lookInput = Look.ReadValue<Vector2>();
+
+        float mouseX = lookInput.x * sensibilityX;
+        float mouseY = lookInput.y * sensibilityY;
 
         yRotation += mouseX;
-
         xRotation -= mouseY;
-
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.rotation =  Quaternion.Euler(xRotation, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        orientation.rotation = Quaternion.Euler(0f, yRotation, 0f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
     public void ChangePosition(bool crouching)
     {
         if (crouching)
         {
-            targetHeigth = crouchingHeight;
+            targetHeight = crouchingHeight;
         }
         else
         {
-            targetHeigth = standingHeight;
+            targetHeight = standingHeight;
         }
     }
 
@@ -69,15 +73,15 @@ public class CameraLook : MonoBehaviour
     {
         if (sens == 0)
         {
-            sensibilityX = 310;
-            sensibilityY = 310;
+            sensibilityX = 70;
+            sensibilityY = 70;
 
             sens = 1;
         }
         else if (sens == 1)
         {
-            sensibilityX = 50;
-            sensibilityY = 50;
+            sensibilityX = 0.5f;
+            sensibilityY = 0.5f;
 
             sens = 0;
         }
