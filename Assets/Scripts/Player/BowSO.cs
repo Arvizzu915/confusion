@@ -8,11 +8,15 @@ public class NormalBowSO : BowSO
 
     public override void Use(PlayerManager player, PlayerCombat combat)
     {
+        if (!combat.aiming) return;
+
         combat.bowManager.PlayAnimClip("PullArrow");
     }
 
     public override void StopUsing(PlayerManager manager, PlayerCombat combat)
     {
+        if (!combat.aiming) return;
+
         if (combat.holding)
         {
             combat.holding = false;
@@ -53,7 +57,7 @@ public class NormalBowSO : BowSO
 
     public override void WeaponUpdate(PlayerCombat combat, PlayerManager manager)
     {
-        if (combat.holding && combat.canShoot)
+        if (combat.holding && combat.canShoot && combat.aiming)
         {
             combat.HoldBow();
             combat.holdingTime += Time.deltaTime;

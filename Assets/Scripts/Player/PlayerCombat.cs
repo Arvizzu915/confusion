@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Bow")]
     public float holdingTime = 0;
     public bool holding = false;
+    public bool aiming = false;
 
     [Header("Aim")]
     public Vector3 aimingDirection;
@@ -22,17 +23,22 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float aimDistance = 100f;
+    [SerializeField] private GameObject aimingCamera;
 
     private void Start()
     {
         inputManager.inputs.Playing.Attack1.performed += TryHoldBow;
         inputManager.inputs.Playing.Attack1.canceled += StopHoldingBow;
+        inputManager.inputs.Playing.Aim.performed += Aim;
+        inputManager.inputs.Playing.Aim.canceled += Aim;
     }
 
     private void OnDisable()
     {
         inputManager.inputs.Playing.Attack1.performed -= TryHoldBow;
         inputManager.inputs.Playing.Attack1.canceled -= StopHoldingBow;
+        inputManager.inputs.Playing.Aim.performed -= Aim;
+        inputManager.inputs.Playing.Aim.canceled -= Aim;
     }
 
     private void Update()
@@ -86,5 +92,21 @@ public class PlayerCombat : MonoBehaviour
         if (currentWeaponSO == null) return;
 
         currentWeaponSO.StopUsing(playerManager, this);
+    }
+
+    public void Aim(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            aiming = true;
+            aimingCamera.SetActive(true);
+            currentWeaponSO.Aim(playerManager, this);
+        }
+        else if(ctx.canceled)
+        {
+            aiming = false;
+            aimingCamera.SetActive(false);
+            currentWeaponSO.CancelAiming(playerManager, this);
+        }
     }
 }

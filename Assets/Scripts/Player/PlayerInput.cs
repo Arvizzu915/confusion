@@ -190,6 +190,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4c40260-2e2b-4b39-a0e2-5ce118686091"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -478,6 +487,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeSens"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6139be4-13c4-4883-b7a0-752602f99a61"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9019bec4-27c2-46a8-a42e-7f8dc4647111"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -698,6 +729,162 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Analyze"",
+            ""id"": ""9f61dd50-7c96-413b-8c49-c1c2374a2506"",
+            ""actions"": [
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""69c6a5f4-4a94-4d4f-9cd1-850f5e1c0d88"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""82f3137b-5551-454f-83e7-652fbade9617"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""cd233c17-3220-4164-9efe-80bd89621a3f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d8bfcb7f-b690-4fce-9ab1-0ea64aa0c8a0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""24b02707-5706-4433-9b50-b004b31cceaf"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d5006bc-03df-469f-920f-6b5f3862ed6d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""61c56c4f-7f98-40c7-b757-061ad95a1556"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2315b7f3-bc03-42b1-a79c-3339ad9b69fc"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""ee49800c-cef6-42ec-9c26-0ca8aa2e78a0"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5f6b27af-a190-468f-9ea9-2f662676f3e8"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ca582262-bf05-4dbc-ab58-9db96b22eff4"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""2769f08c-9c7a-4a55-b960-bd92beb46663"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9e96e44d-d0cf-45b8-aa4d-055c86243fcb"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1460ddc-feae-4787-8f00-1ce758a7adee"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -715,6 +902,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Playing_Crouch = m_Playing.FindAction("Crouch", throwIfNotFound: true);
         m_Playing_ReloadScene = m_Playing.FindAction("ReloadScene", throwIfNotFound: true);
         m_Playing_ChangeSens = m_Playing.FindAction("ChangeSens", throwIfNotFound: true);
+        m_Playing_Aim = m_Playing.FindAction("Aim", throwIfNotFound: true);
         // Inspecting
         m_Inspecting = asset.FindActionMap("Inspecting", throwIfNotFound: true);
         m_Inspecting_Zoom = m_Inspecting.FindAction("Zoom", throwIfNotFound: true);
@@ -722,12 +910,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Inspecting_Reset = m_Inspecting.FindAction("Reset", throwIfNotFound: true);
         m_Inspecting_Rotate = m_Inspecting.FindAction("Rotate", throwIfNotFound: true);
         m_Inspecting_Click = m_Inspecting.FindAction("Click", throwIfNotFound: true);
+        // Analyze
+        m_Analyze = asset.FindActionMap("Analyze", throwIfNotFound: true);
+        m_Analyze_Return = m_Analyze.FindAction("Return", throwIfNotFound: true);
+        m_Analyze_Use = m_Analyze.FindAction("Use", throwIfNotFound: true);
+        m_Analyze_Move = m_Analyze.FindAction("Move", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
     {
         UnityEngine.Debug.Assert(!m_Playing.enabled, "This will cause a leak and performance issues, PlayerInput.Playing.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Inspecting.enabled, "This will cause a leak and performance issues, PlayerInput.Inspecting.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Analyze.enabled, "This will cause a leak and performance issues, PlayerInput.Analyze.Disable() has not been called.");
     }
 
     /// <summary>
@@ -814,6 +1008,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_Crouch;
     private readonly InputAction m_Playing_ReloadScene;
     private readonly InputAction m_Playing_ChangeSens;
+    private readonly InputAction m_Playing_Aim;
     /// <summary>
     /// Provides access to input actions defined in input action map "Playing".
     /// </summary>
@@ -869,6 +1064,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Playing/ChangeSens".
         /// </summary>
         public InputAction @ChangeSens => m_Wrapper.m_Playing_ChangeSens;
+        /// <summary>
+        /// Provides access to the underlying input action "Playing/Aim".
+        /// </summary>
+        public InputAction @Aim => m_Wrapper.m_Playing_Aim;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -928,6 +1127,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChangeSens.started += instance.OnChangeSens;
             @ChangeSens.performed += instance.OnChangeSens;
             @ChangeSens.canceled += instance.OnChangeSens;
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
         }
 
         /// <summary>
@@ -972,6 +1174,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChangeSens.started -= instance.OnChangeSens;
             @ChangeSens.performed -= instance.OnChangeSens;
             @ChangeSens.canceled -= instance.OnChangeSens;
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
         }
 
         /// <summary>
@@ -1145,6 +1350,124 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="InspectingActions" /> instance referencing this action map.
     /// </summary>
     public InspectingActions @Inspecting => new InspectingActions(this);
+
+    // Analyze
+    private readonly InputActionMap m_Analyze;
+    private List<IAnalyzeActions> m_AnalyzeActionsCallbackInterfaces = new List<IAnalyzeActions>();
+    private readonly InputAction m_Analyze_Return;
+    private readonly InputAction m_Analyze_Use;
+    private readonly InputAction m_Analyze_Move;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Analyze".
+    /// </summary>
+    public struct AnalyzeActions
+    {
+        private @PlayerInput m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public AnalyzeActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Analyze/Return".
+        /// </summary>
+        public InputAction @Return => m_Wrapper.m_Analyze_Return;
+        /// <summary>
+        /// Provides access to the underlying input action "Analyze/Use".
+        /// </summary>
+        public InputAction @Use => m_Wrapper.m_Analyze_Use;
+        /// <summary>
+        /// Provides access to the underlying input action "Analyze/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Analyze_Move;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Analyze; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="AnalyzeActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(AnalyzeActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="AnalyzeActions" />
+        public void AddCallbacks(IAnalyzeActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AnalyzeActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AnalyzeActionsCallbackInterfaces.Add(instance);
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
+            @Use.started += instance.OnUse;
+            @Use.performed += instance.OnUse;
+            @Use.canceled += instance.OnUse;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="AnalyzeActions" />
+        private void UnregisterCallbacks(IAnalyzeActions instance)
+        {
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
+            @Use.started -= instance.OnUse;
+            @Use.performed -= instance.OnUse;
+            @Use.canceled -= instance.OnUse;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="AnalyzeActions.UnregisterCallbacks(IAnalyzeActions)" />.
+        /// </summary>
+        /// <seealso cref="AnalyzeActions.UnregisterCallbacks(IAnalyzeActions)" />
+        public void RemoveCallbacks(IAnalyzeActions instance)
+        {
+            if (m_Wrapper.m_AnalyzeActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="AnalyzeActions.AddCallbacks(IAnalyzeActions)" />
+        /// <seealso cref="AnalyzeActions.RemoveCallbacks(IAnalyzeActions)" />
+        /// <seealso cref="AnalyzeActions.UnregisterCallbacks(IAnalyzeActions)" />
+        public void SetCallbacks(IAnalyzeActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AnalyzeActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AnalyzeActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="AnalyzeActions" /> instance referencing this action map.
+    /// </summary>
+    public AnalyzeActions @Analyze => new AnalyzeActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Playing" which allows adding and removing callbacks.
     /// </summary>
@@ -1229,6 +1552,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnChangeSens(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAim(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Inspecting" which allows adding and removing callbacks.
@@ -1272,5 +1602,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Analyze" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="AnalyzeActions.AddCallbacks(IAnalyzeActions)" />
+    /// <seealso cref="AnalyzeActions.RemoveCallbacks(IAnalyzeActions)" />
+    public interface IAnalyzeActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Return" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnReturn(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Use" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUse(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
     }
 }

@@ -13,7 +13,7 @@ public class PlayerDetectInteract : MonoBehaviour
     [SerializeField] private LayerMask detectLayer;
     [SerializeField] private float detectRayLength = 3.5f;
 
-    [HideInInspector] public bool checkingObject = false;
+    public bool checkingObject = false, analyzing = false;
     [HideInInspector] public KeyPiece currentKeyPiece = null;
     public Transform inspectPoint;
     public GameObject inspectCamera, zoomCamera, inspectLight, lantern, bow;
@@ -46,13 +46,12 @@ public class PlayerDetectInteract : MonoBehaviour
 
     void Update()
     {
-        if (checkingObject) return;
+        if (analyzing) return;
 
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, detectRayLength))
+        if (Physics.Raycast(ray, out RaycastHit hit, detectRayLength, detectLayer))
         {
-
             if (hit.transform.TryGetComponent(out Interactuable interactable))
             {
                 Debug.DrawRay(ray.origin, ray.direction * detectRayLength, Color.green);

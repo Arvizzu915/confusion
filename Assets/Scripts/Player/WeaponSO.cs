@@ -20,4 +20,14 @@ public abstract class BowSO : ScriptableObject
     {
         
     }
+
+    public virtual void Aim(PlayerManager manager, PlayerCombat combat)
+    {
+        combat.bowManager.PlayAnimClip("Aim");
+    }
+
+    public virtual void CancelAiming(PlayerManager manager, PlayerCombat combat)
+    {
+        combat.bowManager.PlayAnimClip("BowIdle");
+    }
 }
