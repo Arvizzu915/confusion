@@ -29,6 +29,7 @@ public abstract class IInspectionable : Interactuable
         if (index == itemIndex)
         {
             gameObject.SetActive(false);
+            AnalyzingMode.Instance.ExitAnalyzeMode();
         }
     }
 }

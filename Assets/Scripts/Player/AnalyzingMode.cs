@@ -75,6 +75,11 @@ public class AnalyzingMode : MonoBehaviour
 
     private void ExitAnalyze(InputAction.CallbackContext context)
     {
+        ExitAnalyzeMode();
+    }
+
+    public void ExitAnalyzeMode()
+    {
         CloseMenu();
 
         PlayerDetectInteract.instance.checkingObject = false;
