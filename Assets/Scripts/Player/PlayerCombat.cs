@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
     public float holdingTime = 0;
     public bool holding = false;
     public bool aiming = false;
+    public float rechargeTime = .8f;
 
     [Header("Aim")]
     public Vector3 aimingDirection;
@@ -91,6 +93,8 @@ public class PlayerCombat : MonoBehaviour
     {
         if (currentWeaponSO == null) return;
 
+        holding = false;
+
         currentWeaponSO.StopUsing(playerManager, this);
     }
 
@@ -108,5 +112,12 @@ public class PlayerCombat : MonoBehaviour
             aimingCamera.SetActive(false);
             currentWeaponSO.CancelAiming(playerManager, this);
         }
+    }
+
+    public IEnumerator RechargeWeaponCoroutine()
+    {
+        yield return new WaitForSeconds(rechargeTime);
+
+        canShoot = true;
     }
 }

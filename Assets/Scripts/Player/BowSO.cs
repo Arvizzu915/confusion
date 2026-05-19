@@ -6,37 +6,38 @@ public class NormalBowSO : BowSO
     public float holdingTimeLimit = 2f;
     public float shootForce = 5f;
 
+    public bool pulling = false;
+
     public override void Use(PlayerManager player, PlayerCombat combat)
     {
         if (!combat.aiming) return;
+        if (!combat.canShoot) return;
+        if (pulling) return;
 
+        pulling = true;
         combat.bowManager.PlayAnimClip("PullArrow");
     }
 
     public override void StopUsing(PlayerManager manager, PlayerCombat combat)
     {
-        if (!combat.aiming) return;
-
-        if (combat.holding)
+        if (combat.canShoot && combat.aiming && pulling)
         {
-            combat.holding = false;
-            if (combat.canShoot)
-            {
-                Shoot(combat.holdingTime, combat);
-            }
-            combat.holdingTime = 0;
+            Shoot(combat.holdingTime, combat);
         }
+
+        pulling = false;
+        combat.holdingTime = 0f;
     }
 
-    public void Shoot(float heldTime, PlayerCombat combat)
+    private void Shoot(float heldTime, PlayerCombat combat)
     {
         combat.canShoot = false;
-        heldTime = Mathf.Clamp(heldTime, 0, holdingTimeLimit);
+
+        heldTime = Mathf.Clamp(heldTime, 0f, holdingTimeLimit);
 
         BowManager bowMan = combat.bowManager;
 
         Quaternion rotation = Quaternion.LookRotation(combat.aimingDirection);
-
         rotation *= Quaternion.Euler(90f, 0f, 0f);
 
         GameObject arrow = Instantiate(
@@ -53,14 +54,26 @@ public class NormalBowSO : BowSO
         );
 
         combat.bowManager.PlayAnimClip("BowRecharge");
+        combat.StartCoroutine(combat.RechargeWeaponCoroutine());
     }
 
     public override void WeaponUpdate(PlayerCombat combat, PlayerManager manager)
     {
-        if (combat.holding && combat.canShoot && combat.aiming)
-        {
-            combat.HoldBow();
-            combat.holdingTime += Time.deltaTime;
-        }
+        if (!combat.holding) return;
+        if (!combat.canShoot) return;
+        if (!combat.aiming) return;
+
+        Use(manager, combat);
+
+        combat.holdingTime += Time.deltaTime;
+    }
+
+    public override void CancelAiming(PlayerManager manager, PlayerCombat combat)
+    {
+        base.CancelAiming(manager, combat);
+
+        pulling = false;
+        combat.holding = false;
+        combat.holdingTime = 0f;
     }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 
 public class BowManager : MonoBehaviour
 {
@@ -10,10 +10,6 @@ public class BowManager : MonoBehaviour
 
     [SerializeField] PlayerCombat combat;
 
-    public void RechargeBow()
-    {
-        combat.canShoot = true;
-    }
 
     public void PlayAnimClip(string Trigger)
     {

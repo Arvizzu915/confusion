@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &140919881
 Transform:
   m_ObjectHideFlags: 0
@@ -6160,7 +6160,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 255
   m_RenderingLayerMask: 127
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -12719,7 +12719,7 @@ Transform:
   m_GameObject: {fileID: 1876192767985754508}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6453031, y: -0.09453788, z: 0.108952254, w: 0.750184}
-  m_LocalPosition: {x: 0.259, y: -0.177, z: 0.835}
+  m_LocalPosition: {x: 0.199, y: -0.147, z: 1.034}
   m_LocalScale: {x: 0.039844047, y: 0.509664, z: 0.03984405}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12823,7 +12823,7 @@ Camera:
     height: 1
   near clip plane: 0.02
   far clip plane: 5000
-  field of view: 67
+  field of view: 46.5
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -13164,6 +13164,7 @@ MonoBehaviour:
   holdingTime: 0
   holding: 0
   aiming: 0
+  rechargeTime: 0.8
   aimingDirection: {x: 0, y: 0, z: 0}
   canShoot: 1
   detectLayer:
@@ -13219,6 +13220,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnalyzingMode
   currentObj: {fileID: 0}
+  slotButtons:
+  - {fileID: 1325667884}
+  - {fileID: 393689622}
+  - {fileID: 1698816497}
+  - {fileID: 1974167955}
+  - {fileID: 308453644}
+  - {fileID: 2090715729}
+  - {fileID: 1015751846}
+  - {fileID: 1345295636}
+  - {fileID: 2033688463}
+  - {fileID: 797471358}
+  - {fileID: 518835827}
+  - {fileID: 1484576301}
+  - {fileID: 642324405}
+  - {fileID: 1149670905}
+  - {fileID: 1782888856}
 --- !u!114 &8033320522707342316
 MonoBehaviour:
   m_ObjectHideFlags: 0
