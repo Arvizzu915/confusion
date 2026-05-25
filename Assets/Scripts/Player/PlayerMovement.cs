@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 [RequireComponent (typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
     public PlayerManager PlayerManager;
     public InputManager inputManager;
 
@@ -43,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     private InputAction move;
     public Vector3 moveDirection;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -170,6 +176,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         PlayerManager.instance.cameraLook.ChangePosition(isCrouching);
+    }
+
+    public void StopRunning()
+    {
+        running = false;
+        currentSpeed = normalSpeed;
     }
 
     bool CanStand()

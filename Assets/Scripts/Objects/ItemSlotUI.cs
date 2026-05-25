@@ -7,6 +7,7 @@ public class ItemSlotUI : MonoBehaviour
 
     public Button button;
 
+    [SerializeField] private Image itemImage;
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -18,5 +19,12 @@ public class ItemSlotUI : MonoBehaviour
             return -1;
 
         return item.index;
+    }
+
+    public void SetImage()
+    {
+        if (item == null) return;
+
+        itemImage.sprite = item.icon;
     }
 }

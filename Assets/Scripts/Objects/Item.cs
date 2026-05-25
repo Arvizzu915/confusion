@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-[System.Serializable]
-public class Item
+[CreateAssetMenu(fileName = "Item", menuName = "Objects/item")]
+public class Item : ScriptableObject
 {
     public int index;
 

@@ -50,6 +50,8 @@ public class AnalyzingMode : MonoBehaviour
             });
 
             trigger.triggers.Add(pointerEnter);
+
+            slotButtons[i].SetImage();
         }
     }
 

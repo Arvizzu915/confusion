@@ -89,6 +89,8 @@ public class PlayerCombat : MonoBehaviour
     {
         if (ctx.performed)
         {
+            PlayerMovement.instance.StopRunning();
+
             if (aimCoyoteCoroutine != null)
                 StopCoroutine(aimCoyoteCoroutine);
 
