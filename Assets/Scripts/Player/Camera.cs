@@ -73,15 +73,15 @@ public class CameraLook : MonoBehaviour
     {
         if (sens == 0)
         {
-            sensibilityX = 70;
-            sensibilityY = 70;
+            sensibilityX = .5f;
+            sensibilityY = .5f;
 
             sens = 1;
         }
         else if (sens == 1)
         {
-            sensibilityX = 0.5f;
-            sensibilityY = 0.5f;
+            sensibilityX = 0.25f;
+            sensibilityY = 0.25f;
 
             sens = 0;
         }

@@ -9,7 +9,7 @@ public class PlayerDetectInteract : MonoBehaviour
     public Camera playerCamera;
 
     [SerializeField] private PlayerManager playerManager;
-    private Interactuable currentInteractable = null;
+    [SerializeField] private Interactuable currentInteractable = null;
     [SerializeField] private LayerMask detectLayer;
     [SerializeField] private float detectRayLength = 3.5f;
 

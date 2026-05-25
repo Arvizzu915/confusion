@@ -10,7 +10,7 @@ public class AnalyzingMode : MonoBehaviour
     public IInspectionable currentObj;
 
     [Header("References")]
-    [SerializeField] private Button[] slotButtons;
+    [SerializeField] private ItemSlotUI[] slotButtons;
 
     private int selectedIndex = 0;
     private bool menuOpen = false;
@@ -29,18 +29,17 @@ public class AnalyzingMode : MonoBehaviour
         {
             int index = i;
 
-            slotButtons[i].onClick.AddListener(() =>
+            slotButtons[i].button.onClick.AddListener(() =>
             {
                 SelectSlot(index);
                 UseSlot(index);
             });
 
-            EventTrigger trigger = slotButtons[i].gameObject.GetComponent<EventTrigger>();
-
-            if (trigger == null)
+            
+            if (!slotButtons[i].gameObject.TryGetComponent<EventTrigger>(out var trigger))
                 trigger = slotButtons[i].gameObject.AddComponent<EventTrigger>();
 
-            EventTrigger.Entry pointerEnter = new EventTrigger.Entry
+            EventTrigger.Entry pointerEnter = new()
             {
                 eventID = EventTriggerType.PointerEnter
             };
@@ -123,8 +122,7 @@ public class AnalyzingMode : MonoBehaviour
         {
             if (slotButtons[i].gameObject == selectedObject)
             {
-                selectedIndex = i;
-                UseSlot(selectedIndex);
+                UseSlot(i);
                 return;
             }
         }
@@ -139,16 +137,15 @@ public class AnalyzingMode : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(slotButtons[selectedIndex].gameObject);
     }
 
-    private void UseSlot(int index)
+    private void UseSlot(int slotIndex)
     {
-        Debug.Log("Selected item slot: " + index);
+        Item item = slotButtons[slotIndex].item;
 
-        currentObj.UseItem(index);
+        if (item == null)
+            return;
 
-        // Later:
-        // inspect item
-        // combine item
-        // use item
-        // examine item
+        Debug.Log("Using item: " + item.itemName);
+
+        currentObj.UseItem(item.index);
     }
 }

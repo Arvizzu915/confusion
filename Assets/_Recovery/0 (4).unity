@@ -15,17 +15,17 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 0
-  m_FogColor: {r: 0, g: 0, b: 0, a: 0.8784314}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -1215,15 +1215,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141661031}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25564387, y: 0.48471832, z: -0.019975554, w: 0.83623886}
-  m_LocalPosition: {x: -0.4779998, y: -0.47200012, z: 0.8752166}
+  m_LocalRotation: {x: 0.25564387, y: 0.48471832, z: -0.019975564, w: 0.83623886}
+  m_LocalPosition: {x: -0.478, y: -0.472, z: 0.87521666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2114950850}
   - {fileID: 4281171581273101990}
   - {fileID: 1155463936634842374}
-  m_Father: {fileID: 397355295169520493}
+  m_Father: {fileID: 1972519129592685061}
   m_LocalEulerAnglesHint: {x: 26.546, y: 63.483, z: 13.868}
 --- !u!95 &141661033
 Animator:
@@ -2489,7 +2489,6 @@ GameObject:
   - component: {fileID: 308453646}
   - component: {fileID: 308453645}
   - component: {fileID: 308453644}
-  - component: {fileID: 308453647}
   m_Layer: 5
   m_Name: ObjectButton (4)
   m_TagString: Untagged
@@ -2599,23 +2598,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308453642}
   m_CullTransparentMesh: 1
---- !u!114 &308453647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308453642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &315364715
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,7 +3171,6 @@ GameObject:
   - component: {fileID: 393689624}
   - component: {fileID: 393689623}
   - component: {fileID: 393689622}
-  - component: {fileID: 393689625}
   m_Layer: 5
   m_Name: ObjectButton (1)
   m_TagString: Untagged
@@ -3299,23 +3280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393689620}
   m_CullTransparentMesh: 1
---- !u!114 &393689625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393689620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &410748585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3938,7 +3902,6 @@ GameObject:
   - component: {fileID: 518835829}
   - component: {fileID: 518835828}
   - component: {fileID: 518835827}
-  - component: {fileID: 518835830}
   m_Layer: 5
   m_Name: ObjectButton (10)
   m_TagString: Untagged
@@ -4048,23 +4011,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518835825}
   m_CullTransparentMesh: 1
---- !u!114 &518835830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518835825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &547327497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4300,7 +4246,6 @@ GameObject:
   - component: {fileID: 642324407}
   - component: {fileID: 642324406}
   - component: {fileID: 642324405}
-  - component: {fileID: 642324408}
   m_Layer: 5
   m_Name: ObjectButton (12)
   m_TagString: Untagged
@@ -4410,23 +4355,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642324403}
   m_CullTransparentMesh: 1
---- !u!114 &642324408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642324403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &668518689
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,7 +5197,6 @@ GameObject:
   - component: {fileID: 797471360}
   - component: {fileID: 797471359}
   - component: {fileID: 797471358}
-  - component: {fileID: 797471361}
   m_Layer: 5
   m_Name: ObjectButton (9)
   m_TagString: Untagged
@@ -5379,23 +5306,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797471356}
   m_CullTransparentMesh: 1
---- !u!114 &797471361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 797471356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &840084058
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,14 +6096,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 1
   m_CustomShadowLayers: 0
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
   m_RenderingLayersMask:
     serializedVersion: 0
-    m_Bits: 4294967295
+    m_Bits: 127
   m_ShadowRenderingLayersMask:
     serializedVersion: 0
     m_Bits: 1
@@ -6212,11 +6122,11 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
-  m_Color: {r: 0.5613208, g: 1, b: 0.95196044, a: 1}
-  m_Intensity: 21.2
-  m_Range: 24.2
-  m_SpotAngle: 76.71428
-  m_InnerSpotAngle: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 52.7
+  m_Range: 20.84
+  m_SpotAngle: 83.385086
+  m_InnerSpotAngle: 29.13491
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 2
@@ -6251,7 +6161,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 255
-  m_RenderingLayerMask: 4294967295
+  m_RenderingLayerMask: 127
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
@@ -6279,7 +6189,6 @@ GameObject:
   - component: {fileID: 1015751848}
   - component: {fileID: 1015751847}
   - component: {fileID: 1015751846}
-  - component: {fileID: 1015751849}
   m_Layer: 5
   m_Name: ObjectButton (6)
   m_TagString: Untagged
@@ -6389,23 +6298,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015751844}
   m_CullTransparentMesh: 1
---- !u!114 &1015751849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015751844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1017279635
 GameObject:
   m_ObjectHideFlags: 3
@@ -6501,133 +6393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachinePipeline
---- !u!1 &1021568834
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1021568835}
-  - component: {fileID: 1021568837}
-  - component: {fileID: 1021568836}
-  m_Layer: 3
-  m_Name: LanternLight (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1021568835
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021568834}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.06}
-  m_LocalScale: {x: 1, y: 2, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2859830794131673975}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1021568836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021568834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 4294967295
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
---- !u!108 &1021568837
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021568834}
-  m_Enabled: 1
-  serializedVersion: 12
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 85.9
-  m_Range: 31.3
-  m_SpotAngle: 34.465836
-  m_InnerSpotAngle: 2.2236025
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 255
-  m_RenderingLayerMask: 4294967295
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
 --- !u!1 &1033779916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7269,7 +7034,6 @@ GameObject:
   - component: {fileID: 1149670907}
   - component: {fileID: 1149670906}
   - component: {fileID: 1149670905}
-  - component: {fileID: 1149670908}
   m_Layer: 5
   m_Name: ObjectButton (13)
   m_TagString: Untagged
@@ -7379,23 +7143,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1149670903}
   m_CullTransparentMesh: 1
---- !u!114 &1149670908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149670903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1203326884
 GameObject:
   m_ObjectHideFlags: 0
@@ -7559,7 +7306,6 @@ GameObject:
   - component: {fileID: 1325667886}
   - component: {fileID: 1325667885}
   - component: {fileID: 1325667884}
-  - component: {fileID: 1325667887}
   m_Layer: 5
   m_Name: ObjectButton
   m_TagString: Untagged
@@ -7669,23 +7415,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325667882}
   m_CullTransparentMesh: 1
---- !u!114 &1325667887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325667882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1345295634
 GameObject:
   m_ObjectHideFlags: 0
@@ -7698,7 +7427,6 @@ GameObject:
   - component: {fileID: 1345295638}
   - component: {fileID: 1345295637}
   - component: {fileID: 1345295636}
-  - component: {fileID: 1345295639}
   m_Layer: 5
   m_Name: ObjectButton (7)
   m_TagString: Untagged
@@ -7808,23 +7536,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345295634}
   m_CullTransparentMesh: 1
---- !u!114 &1345295639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345295634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1352641900
 GameObject:
   m_ObjectHideFlags: 0
@@ -8687,7 +8398,6 @@ GameObject:
   - component: {fileID: 1484576303}
   - component: {fileID: 1484576302}
   - component: {fileID: 1484576301}
-  - component: {fileID: 1484576304}
   m_Layer: 5
   m_Name: ObjectButton (11)
   m_TagString: Untagged
@@ -8797,23 +8507,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484576299}
   m_CullTransparentMesh: 1
---- !u!114 &1484576304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484576299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1530591704
 GameObject:
   m_ObjectHideFlags: 0
@@ -9897,7 +9590,6 @@ GameObject:
   - component: {fileID: 1698816499}
   - component: {fileID: 1698816498}
   - component: {fileID: 1698816497}
-  - component: {fileID: 1698816500}
   m_Layer: 5
   m_Name: ObjectButton (2)
   m_TagString: Untagged
@@ -10007,23 +9699,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698816495}
   m_CullTransparentMesh: 1
---- !u!114 &1698816500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698816495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1764855549
 GameObject:
   m_ObjectHideFlags: 0
@@ -10149,7 +9824,6 @@ GameObject:
   - component: {fileID: 1782888858}
   - component: {fileID: 1782888857}
   - component: {fileID: 1782888856}
-  - component: {fileID: 1782888859}
   m_Layer: 5
   m_Name: ObjectButton (14)
   m_TagString: Untagged
@@ -10259,23 +9933,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782888854}
   m_CullTransparentMesh: 1
---- !u!114 &1782888859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782888854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1855168627
 GameObject:
   m_ObjectHideFlags: 0
@@ -11070,7 +10727,6 @@ GameObject:
   - component: {fileID: 1974167957}
   - component: {fileID: 1974167956}
   - component: {fileID: 1974167955}
-  - component: {fileID: 1974167958}
   m_Layer: 5
   m_Name: ObjectButton (3)
   m_TagString: Untagged
@@ -11180,23 +10836,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974167953}
   m_CullTransparentMesh: 1
---- !u!114 &1974167958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974167953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &1975045688
 GameObject:
   m_ObjectHideFlags: 0
@@ -11397,7 +11036,6 @@ GameObject:
   - component: {fileID: 2033688465}
   - component: {fileID: 2033688464}
   - component: {fileID: 2033688463}
-  - component: {fileID: 2033688466}
   m_Layer: 5
   m_Name: ObjectButton (8)
   m_TagString: Untagged
@@ -11507,23 +11145,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033688461}
   m_CullTransparentMesh: 1
---- !u!114 &2033688466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033688461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &2035212381
 GameObject:
   m_ObjectHideFlags: 0
@@ -12096,7 +11717,6 @@ GameObject:
   - component: {fileID: 2090715731}
   - component: {fileID: 2090715730}
   - component: {fileID: 2090715729}
-  - component: {fileID: 2090715732}
   m_Layer: 5
   m_Name: ObjectButton (5)
   m_TagString: Untagged
@@ -12206,23 +11826,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2090715727}
   m_CullTransparentMesh: 1
---- !u!114 &2090715732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090715727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51322e77f1ed7b046b83efb6ecec1b6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemSlotUI
-  item:
-    index: 0
-    itemName: 
-    icon: {fileID: 0}
-  button: {fileID: 308453644}
 --- !u!1 &2108547057
 GameObject:
   m_ObjectHideFlags: 3
@@ -12793,7 +12396,6 @@ Transform:
   - {fileID: 275816372}
   - {fileID: 74007391}
   - {fileID: 300721800}
-  - {fileID: 141661032}
   m_Father: {fileID: 1972519129592685061}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &791180526674117020
@@ -12867,6 +12469,7 @@ Transform:
   m_Children:
   - {fileID: 397355295169520493}
   - {fileID: 6934140722888901616}
+  - {fileID: 141661032}
   m_Father: {fileID: 2915987333867128455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2859830794131673975
@@ -12877,13 +12480,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6732114798269321057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.1740882, z: 0, w: 0.98473006}
-  m_LocalPosition: {x: -14.954288, y: 3.572, z: 15.077276}
+  m_LocalRotation: {x: 0, y: 0.22143328, z: 0, w: 0.97517556}
+  m_LocalPosition: {x: -18.784344, y: 3.572, z: 16.87413}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 978629589}
-  - {fileID: 1021568835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2915987333867128455
@@ -12894,15 +12496,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2973578300844205466}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.1740882, z: -0, w: 0.98473006}
-  m_LocalPosition: {x: -14.8, y: 2.072, z: 15.5}
+  m_LocalRotation: {x: -0, y: 0.22143328, z: -0, w: 0.97517556}
+  m_LocalPosition: {x: -18.59, y: 2.072, z: 17.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 791180526674117020}
   - {fileID: 1972519129592685061}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 20.051, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 25.586, z: 0}
 --- !u!143 &2930521189661000277
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13223,7 +12825,7 @@ Camera:
     height: 1
   near clip plane: 0.02
   far clip plane: 5000
-  field of view: 46.5
+  field of view: 67
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -13256,10 +12858,10 @@ MonoBehaviour:
   PlayerManager: {fileID: 8033320522707342316}
   inputManager: {fileID: 4893416608240539522}
   controller: {fileID: 2930521189661000277}
-  currentSpeed: 3.3
-  normalSpeed: 3.3
-  runningSpeed: 8
-  crouchingSpeed: 1.4
+  currentSpeed: 3
+  normalSpeed: 3
+  runningSpeed: 7
+  crouchingSpeed: 2
   gravity: -25
   isGrounded: 1
   jumpHeight: 5
@@ -13414,10 +13016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621005023f5199d4abfa7fc8fc6d7c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSway
-  maxAmplitude: 1
+  maxAmplitude: 0.07
   maxFrequency: 11
-  swayMultiplier: 0.04
-  frequencyMultiplayer: 1.6
+  swayMultiplier: 0.01
+  frequencyMultiplayer: 2
 --- !u!114 &6227326001894635773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13430,8 +13032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a71916d9b844a48874600e9f289c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensibilityX: 0.3
-  sensibilityY: 0.3
+  sensibilityX: 0.5
+  sensibilityY: 0.5
   orientation: {fileID: 2915987333867128455}
   crouchingHeight: 0
   standingHeight: 1.5
@@ -13566,7 +13168,7 @@ MonoBehaviour:
   holding: 0
   aiming: 0
   canShootAfterAim: 0
-  aimCoyoteTime: 0.1
+  aimCoyoteTime: 0.2
   rechargeTime: 0.8
   aimingDirection: {x: 0, y: 0, z: 0}
   canShoot: 1
@@ -13624,21 +13226,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnalyzingMode
   currentObj: {fileID: 0}
   slotButtons:
-  - {fileID: 1325667887}
-  - {fileID: 393689625}
-  - {fileID: 1698816500}
-  - {fileID: 1974167958}
-  - {fileID: 308453647}
-  - {fileID: 2090715732}
-  - {fileID: 1015751849}
-  - {fileID: 1345295639}
-  - {fileID: 2033688466}
-  - {fileID: 797471361}
-  - {fileID: 518835830}
-  - {fileID: 1484576304}
-  - {fileID: 642324408}
-  - {fileID: 1149670908}
-  - {fileID: 1782888859}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &8033320522707342316
 MonoBehaviour:
   m_ObjectHideFlags: 0

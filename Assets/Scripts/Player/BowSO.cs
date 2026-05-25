@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NomalBow", menuName = "Bows/NormalBow")]
+[CreateAssetMenu(fileName = "NormalBow", menuName = "Bows/NormalBow")]
 public class NormalBowSO : BowSO
 {
     public float holdingTimeLimit = 2f;
     public float shootForce = 5f;
 
-    public bool pulling = false;
+    private bool pulling = false;
 
     public override void Use(PlayerManager player, PlayerCombat combat)
     {
-        if (!combat.aiming) return;
+        if (!combat.CanShootWithAim()) return;
         if (!combat.canShoot) return;
         if (pulling) return;
 
@@ -20,7 +20,7 @@ public class NormalBowSO : BowSO
 
     public override void StopUsing(PlayerManager manager, PlayerCombat combat)
     {
-        if (combat.canShoot && combat.aiming && pulling)
+        if (combat.canShoot && combat.CanShootWithAim() && pulling)
         {
             Shoot(combat.holdingTime, combat);
         }
@@ -61,10 +61,9 @@ public class NormalBowSO : BowSO
     {
         if (!combat.holding) return;
         if (!combat.canShoot) return;
-        if (!combat.aiming) return;
+        if (!combat.CanShootWithAim()) return;
 
         Use(manager, combat);
-
         combat.holdingTime += Time.deltaTime;
     }
 
@@ -73,7 +72,5 @@ public class NormalBowSO : BowSO
         base.CancelAiming(manager, combat);
 
         pulling = false;
-        combat.holding = false;
-        combat.holdingTime = 0f;
     }
 }

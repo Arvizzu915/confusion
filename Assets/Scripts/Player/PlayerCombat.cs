@@ -16,6 +16,8 @@ public class PlayerCombat : MonoBehaviour
     public float holdingTime = 0;
     public bool holding = false;
     public bool aiming = false;
+    public bool canShootAfterAim = false;
+    public float aimCoyoteTime = 0.2f;
     public float rechargeTime = .8f;
 
     [Header("Aim")]
@@ -26,6 +28,8 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float aimDistance = 100f;
     [SerializeField] private GameObject aimingCamera;
+
+    private Coroutine aimCoyoteCoroutine;
 
     private void Start()
     {
@@ -46,7 +50,6 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         currentWeaponSO.WeaponUpdate(this, playerManager);
-
         ShootAimRay();
     }
 
@@ -57,15 +60,80 @@ public class PlayerCombat : MonoBehaviour
         Vector3 targetPoint;
 
         if (Physics.Raycast(ray, out RaycastHit hit, aimDistance, detectLayer))
-        {
             targetPoint = hit.point;
+        else
+            targetPoint = ray.origin + ray.direction * aimDistance;
+
+        aimingDirection = (targetPoint - bowManager.arrowSpwnPos.position).normalized;
+    }
+
+    public bool CanShootWithAim()
+    {
+        return aiming || canShootAfterAim;
+    }
+
+    public void TryHoldBow(InputAction.CallbackContext ctx)
+    {
+        holding = true;
+    }
+
+    public void StopHoldingBow(InputAction.CallbackContext ctx)
+    {
+        if (currentWeaponSO == null) return;
+
+        holding = false;
+        currentWeaponSO.StopUsing(playerManager, this);
+    }
+
+    public void Aim(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            if (aimCoyoteCoroutine != null)
+                StopCoroutine(aimCoyoteCoroutine);
+
+            aiming = true;
+            canShootAfterAim = true;
+
+            aimingCamera.SetActive(true);
+            currentWeaponSO.Aim(playerManager, this);
+        }
+        else if (ctx.canceled)
+        {
+            aiming = false;
+            aimingCamera.SetActive(false);
+
+            if (aimCoyoteCoroutine != null)
+                StopCoroutine(aimCoyoteCoroutine);
+
+            aimCoyoteCoroutine = StartCoroutine(ShootCoyoteTime());
+        }
+    }
+
+    private IEnumerator ShootCoyoteTime()
+    {
+        canShootAfterAim = true;
+
+        yield return new WaitForSeconds(aimCoyoteTime);
+
+        canShootAfterAim = false;
+
+        if (holding)
+        {
+            holding = false;
+            holdingTime = 0f;
+            currentWeaponSO.CancelAiming(playerManager, this);
         }
         else
         {
-            targetPoint = ray.origin + ray.direction * aimDistance;
+            currentWeaponSO.CancelAiming(playerManager, this);
         }
+    }
 
-        aimingDirection = (targetPoint - bowManager.arrowSpwnPos.position).normalized;
+    public IEnumerator RechargeWeaponCoroutine()
+    {
+        yield return new WaitForSeconds(rechargeTime);
+        canShoot = true;
     }
 
     public void EquipWeapon(GameObject weapon, BowSO newWeaponSO)
@@ -75,49 +143,5 @@ public class PlayerCombat : MonoBehaviour
         GameObject newWeapon = Instantiate(weapon, weapon.transform);
         newWeapon.transform.SetParent(weapon.transform);
         newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-    }
-
-    public void TryHoldBow(InputAction.CallbackContext ctx)
-    {
-        holding = true;
-    }
-
-    public void HoldBow()
-    {
-        if (currentWeaponSO == null) return;
-
-        currentWeaponSO.Use(playerManager, this);
-    }
-
-    public void StopHoldingBow(InputAction.CallbackContext ctx)
-    {
-        if (currentWeaponSO == null) return;
-
-        holding = false;
-
-        currentWeaponSO.StopUsing(playerManager, this);
-    }
-
-    public void Aim(InputAction.CallbackContext ctx)
-    {
-        if (ctx.performed)
-        {
-            aiming = true;
-            aimingCamera.SetActive(true);
-            currentWeaponSO.Aim(playerManager, this);
-        }
-        else if(ctx.canceled)
-        {
-            aiming = false;
-            aimingCamera.SetActive(false);
-            currentWeaponSO.CancelAiming(playerManager, this);
-        }
-    }
-
-    public IEnumerator RechargeWeaponCoroutine()
-    {
-        yield return new WaitForSeconds(rechargeTime);
-
-        canShoot = true;
     }
 }
