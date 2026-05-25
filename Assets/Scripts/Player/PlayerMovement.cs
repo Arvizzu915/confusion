@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Run(InputAction.CallbackContext ctx)
     {
-        if (!isGrounded || isCrouching) return;
+        if (!isGrounded || isCrouching || PlayerCombat.Instance.aiming) return;
 
         running = true;
 

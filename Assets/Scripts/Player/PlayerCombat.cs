@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
+    public static PlayerCombat Instance;
+
     public PlayerManager playerManager;
     public InputManager inputManager;
 
@@ -30,6 +32,11 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject aimingCamera;
 
     private Coroutine aimCoyoteCoroutine;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
