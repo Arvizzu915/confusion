@@ -7,6 +7,8 @@ public class KeyPiece : Interactuable
     [SerializeField] private int index = 0;
     [SerializeField] private Collider coll;
 
+    [SerializeField] private Item item;
+
     private PlayerDetectInteract interactScript = null;
 
     [Header("Inspect")]
@@ -18,6 +20,9 @@ public class KeyPiece : Interactuable
     private bool canRotate = false;
     private InputAction lookAction;
     private Quaternion inspectPointRot;
+
+    [Header("Inventory")]
+    [SerializeField] private GameObject inventoryPanel;
 
     private void Update()
     {
@@ -56,10 +61,15 @@ public class KeyPiece : Interactuable
         lookAction = PlayerManager.instance.GetComponent<InputManager>().inputs.Inspecting.Rotate;
     }
 
-    public void TakeObject()
+    public void TryTakeObject()
     {
-        
+        Debug.Log("open");
 
+        ObjectsInventory.instance.OpenMenu();
+    }
+
+    private void AddToInventory()
+    {
         PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(false);
 
         interactScript = PlayerDetectInteract.instance;
@@ -172,4 +182,5 @@ public class KeyPiece : Interactuable
 
         PlayerDetectInteract.instance.inspectLight.SetActive(true);
     }
+    
 }

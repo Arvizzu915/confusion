@@ -94,15 +94,20 @@ public class PlayerDetectInteract : MonoBehaviour
 
         if (ctx.performed)
         {
-            checkingObject = false;
-            playerManager.inputManager.SwitchToGameplay();
-
-            currentKeyPiece.TakeObject();
-            inspectLight.SetActive(false);
-            inspectCamera.SetActive(false);
-            zoomCamera.SetActive(false);
-            lantern.SetActive(true);
+            currentKeyPiece.TryTakeObject();
         }
+    }
+
+    public  void ExitInspectingMode()
+    {
+        checkingObject = false;
+        playerManager.inputManager.SwitchToGameplay();
+
+
+        inspectLight.SetActive(false);
+        inspectCamera.SetActive(false);
+        zoomCamera.SetActive(false);
+        lantern.SetActive(true);
     }
 
     private void Zoom(InputAction.CallbackContext ctx)

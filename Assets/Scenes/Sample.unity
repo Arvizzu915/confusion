@@ -254,6 +254,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 30625579}
   itemImage: {fileID: 29506562}
+  occupied: 0
 --- !u!114 &30625579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,6 +1064,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 94149055}
   itemImage: {fileID: 2141240656}
+  occupied: 0
 --- !u!114 &94149055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1371,6 +1373,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 139378810}
   itemImage: {fileID: 585357365}
+  occupied: 0
 --- !u!114 &139378810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,6 +2877,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: f0cde6520afdeea43a5acde47607004e, type: 2}
   button: {fileID: 381412242}
   itemImage: {fileID: 692301515}
+  occupied: 0
 --- !u!114 &381412242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3647,6 +3651,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 445950239}
   itemImage: {fileID: 1148646292}
+  occupied: 0
 --- !u!114 &445950239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4023,6 +4028,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 497444811}
   itemImage: {fileID: 755281949}
+  occupied: 0
 --- !u!114 &497444811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4933,6 +4939,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 732023392}
   itemImage: {fileID: 1688706883}
+  occupied: 0
 --- !u!114 &732023392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5070,6 +5077,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 735010487}
   itemImage: {fileID: 348277374}
+  occupied: 0
 --- !u!114 &735010487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5409,6 +5417,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 799375347}
   itemImage: {fileID: 1081176193}
+  occupied: 0
 --- !u!114 &799375347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6530,7 +6539,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9009434, g: 1, b: 0.9961995, a: 1}
   m_Intensity: 34.52
   m_Range: 31.3
   m_SpotAngle: 87.83229
@@ -7344,6 +7353,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 1218035881}
   itemImage: {fileID: 1863936679}
+  occupied: 0
 --- !u!114 &1218035881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9591,6 +9601,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 1850200667}
   itemImage: {fileID: 1422411882}
+  occupied: 0
 --- !u!114 &1850200667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9822,8 +9833,10 @@ MonoBehaviour:
   inspectable: 1
   index: 0
   coll: {fileID: 1868759100}
+  item: {fileID: 11400000, guid: f0cde6520afdeea43a5acde47607004e, type: 2}
   inspectDuration: 1
   rotationSpeed: 120
+  inventoryPanel: {fileID: 0}
 --- !u!65 &1868759100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10623,6 +10636,7 @@ MonoBehaviour:
   item: {fileID: 0}
   button: {fileID: 2024301977}
   itemImage: {fileID: 244947636}
+  occupied: 0
 --- !u!114 &2024301977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11995,7 +12009,7 @@ Transform:
   m_GameObject: {fileID: 6732114798269321057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.14112036, z: 0, w: 0.9899925}
-  m_LocalPosition: {x: -9.932737, y: 3.572, z: 18.779922}
+  m_LocalPosition: {x: -13.8057375, y: 3.572, z: 18.247923}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12013,7 +12027,7 @@ Transform:
   m_GameObject: {fileID: 2973578300844205466}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.14112036, z: -0, w: 0.9899925}
-  m_LocalPosition: {x: -9.807, y: 2.072, z: 19.212}
+  m_LocalPosition: {x: -13.68, y: 2.072, z: 18.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12745,19 +12759,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnalyzingMode
   currentObj: {fileID: 0}
-  slotButtons:
-  - {fileID: 1218035880}
-  - {fileID: 30625578}
-  - {fileID: 94149054}
-  - {fileID: 799375346}
-  - {fileID: 1850200666}
-  - {fileID: 497444810}
-  - {fileID: 381412241}
-  - {fileID: 2024301976}
-  - {fileID: 735010486}
-  - {fileID: 732023391}
-  - {fileID: 445950238}
-  - {fileID: 139378809}
 --- !u!114 &8033320522707342316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12789,6 +12790,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectsInventory
   keyPieces: 000000
+  slotButtons:
+  - {fileID: 1218035880}
+  - {fileID: 30625578}
+  - {fileID: 94149054}
+  - {fileID: 799375346}
+  - {fileID: 1850200666}
+  - {fileID: 497444810}
+  - {fileID: 381412241}
+  - {fileID: 2024301976}
+  - {fileID: 735010486}
+  - {fileID: 732023391}
+  - {fileID: 445950238}
+  - {fileID: 139378809}
+  selectedIndex: 0
+  menuOpen: 0
 --- !u!1 &8231648647022692585
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class LevelCanvas : MonoBehaviour
         instance = this;
     }
 
-    public void ChangeToInspectHUD()
+    public void OpenInventoryHUD()
     {
         HUDPanel.SetActive(false);
         inspectingPanel.SetActive(true);
