@@ -30,7 +30,7 @@ public class AnalyzingMode : MonoBehaviour
 
     public void EnterAnalyzeMode()
     {
-        ObjectsInventory.instance.OpenMenu();
+        ObjectsInventory.instance.OpenMenu(null);
 
         InputManager.Instance.SwitchToAnalyze();
         PlayerManager.instance.PlayerUIManager.CanInteract(false, "");

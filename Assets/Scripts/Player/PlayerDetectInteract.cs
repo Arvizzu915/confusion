@@ -81,10 +81,6 @@ public class PlayerDetectInteract : MonoBehaviour
         if (currentInteractable != null)
         {
             currentInteractable.Interact(playerManager);
-            if (currentInteractable.inspectable)
-            {
-                checkingObject = true;
-            }
         }
     }
 

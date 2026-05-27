@@ -2,14 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class KeyPiece : Interactuable
+public class KeyPiece : PickableObject
 {
-    [SerializeField] private int index = 0;
     [SerializeField] private Collider coll;
-
-    [SerializeField] private Item item;
-
-    private PlayerDetectInteract interactScript = null;
 
     [Header("Inspect")]
     [SerializeField] private float inspectDuration = 0.5f;
@@ -23,6 +18,9 @@ public class KeyPiece : Interactuable
 
     [Header("Inventory")]
     [SerializeField] private GameObject inventoryPanel;
+
+    [SerializeField] private Vector3 startingPos;
+    [SerializeField] private Quaternion startingRot;
 
     private void Update()
     {
@@ -38,6 +36,8 @@ public class KeyPiece : Interactuable
 
     private void CheckObject()
     {
+
+        PlayerDetectInteract.instance.checkingObject = true;
         PlayerManager.instance.inputManager.SwitchToInspect();
 
         PlayerDetectInteract.instance.inspectCamera.SetActive(true);
@@ -61,25 +61,26 @@ public class KeyPiece : Interactuable
         lookAction = PlayerManager.instance.GetComponent<InputManager>().inputs.Inspecting.Rotate;
     }
 
-    public void TryTakeObject()
+    public override void TryTakeObject()
     {
-        Debug.Log("open");
+        base.TryTakeObject();
 
-        ObjectsInventory.instance.OpenMenu();
+        PlayerDetectInteract.instance.checkingObject = false;
+        PlayerDetectInteract.instance.zoomCamera.SetActive(false);
+        canRotate = false;
+        StartCoroutine(ResetPosition());
+        PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(false);
     }
 
-    private void AddToInventory()
+    public override void CancelAdd()
     {
-        PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(false);
+        base.CancelAdd();
 
-        interactScript = PlayerDetectInteract.instance;
+        PlayerDetectInteract.instance.checkingObject = false;
+        interactScript.lantern.SetActive(true);
+        PlayerDetectInteract.instance.inspectCamera.SetActive(false);
 
-        interactScript.currentKeyPiece = null;
-
-        Time.timeScale = 1;
-        ObjectsInventory.instance.AddKeyPiece(index);
-
-        gameObject.SetActive(false);
+        StartCoroutine(MoveToStartPoint());
     }
 
     private void RotateObject()
@@ -143,6 +144,44 @@ public class KeyPiece : Interactuable
         canRotate = true;
     }
 
+    private IEnumerator MoveToStartPoint()
+    {
+        Vector3 startPos = transform.position;
+        Quaternion startRot = transform.rotation;
+
+        Vector3 targetPos = startingPos;
+        Quaternion targetRot = startingRot;
+
+        float timer = 0f;
+
+        while (timer < inspectDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            float t = timer / inspectDuration;
+
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+
+            transform.SetPositionAndRotation(Vector3.Lerp(
+                startPos,
+                targetPos,
+                t
+            ), Quaternion.Slerp(
+                startRot,
+                targetRot,
+                t
+            ));
+
+            yield return null;
+        }
+
+        transform.SetPositionAndRotation(targetPos, targetRot);
+
+        canRotate = true;
+        coll.enabled = true;
+    }
+
     public IEnumerator ResetPosition()
     {
         Quaternion startRot = transform.rotation;
@@ -182,5 +221,5 @@ public class KeyPiece : Interactuable
 
         PlayerDetectInteract.instance.inspectLight.SetActive(true);
     }
-    
+   
 }
