@@ -16,7 +16,7 @@ public class PlayerDetectInteract : MonoBehaviour
     public bool checkingObject = false, analyzing = false;
     [HideInInspector] public KeyPiece currentKeyPiece = null;
     public Transform inspectPoint;
-    public GameObject inspectCamera, zoomCamera, inspectLight, lantern, bow;
+    public GameObject inspectCamera, zoomCamera, inspectLight, flashlight, bow;
 
     private bool zooming = false;
 
@@ -103,7 +103,7 @@ public class PlayerDetectInteract : MonoBehaviour
         inspectLight.SetActive(false);
         inspectCamera.SetActive(false);
         zoomCamera.SetActive(false);
-        lantern.SetActive(true);
+        flashlight.SetActive(true);
     }
 
     private void Zoom(InputAction.CallbackContext ctx)

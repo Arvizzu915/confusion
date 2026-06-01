@@ -16,6 +16,7 @@ public class NormalBowSO : BowSO
 
         pulling = true;
         combat.bowManager.PlayAnimClip("PullArrow");
+        combat.shootingCamera.SetActive(true);
     }
 
     public override void StopUsing(PlayerManager manager, PlayerCombat combat)
@@ -31,6 +32,7 @@ public class NormalBowSO : BowSO
 
     private void Shoot(float heldTime, PlayerCombat combat)
     {
+        combat.shootingCamera.SetActive(false);
         combat.canShoot = false;
 
         heldTime = Mathf.Clamp(heldTime, 0f, holdingTimeLimit);

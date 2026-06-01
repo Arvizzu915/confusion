@@ -51,7 +51,7 @@ public class KeyPiece : PickableObject
 
         interactScript.currentKeyPiece = this;
 
-        interactScript.lantern.SetActive(false);
+        interactScript.flashlight.SetActive(false);
 
         Time.timeScale = 0;
 
@@ -77,7 +77,7 @@ public class KeyPiece : PickableObject
         base.CancelAdd();
 
         PlayerDetectInteract.instance.checkingObject = false;
-        interactScript.lantern.SetActive(true);
+        interactScript.flashlight.SetActive(true);
         PlayerDetectInteract.instance.inspectCamera.SetActive(false);
 
         StartCoroutine(MoveToStartPoint());

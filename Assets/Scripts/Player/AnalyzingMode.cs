@@ -35,7 +35,7 @@ public class AnalyzingMode : MonoBehaviour
         InputManager.Instance.SwitchToAnalyze();
         PlayerManager.instance.PlayerUIManager.CanInteract(false, "");
         PlayerDetectInteract.instance.analyzing = true;
-        PlayerDetectInteract.instance.lantern.GetComponent<Light>().intensity = 3;
+        PlayerDetectInteract.instance.flashlight.GetComponent<Light>().intensity = 3;
         PlayerDetectInteract.instance.bow.SetActive(false);
         Time.timeScale = 0.0f;
     }
@@ -51,7 +51,7 @@ public class AnalyzingMode : MonoBehaviour
 
         PlayerDetectInteract.instance.checkingObject = false;
         InputManager.Instance.SwitchToGameplay();
-        PlayerDetectInteract.instance.lantern.GetComponent<Light>().intensity = 52;
+        PlayerDetectInteract.instance.flashlight.GetComponent<Light>().intensity = 52;
         PlayerDetectInteract.instance.analyzing = false;
         LevelCanvas.instance.ChangeToPlayingHUD();
         PlayerDetectInteract.instance.bow.SetActive(true);

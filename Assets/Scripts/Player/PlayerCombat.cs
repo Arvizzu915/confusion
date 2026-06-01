@@ -29,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float aimDistance = 100f;
-    [SerializeField] private GameObject aimingCamera;
+    public GameObject aimingCamera, shootingCamera;
 
     private Coroutine aimCoyoteCoroutine;
 
