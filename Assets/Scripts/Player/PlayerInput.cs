@@ -974,6 +974,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6504c09d-962b-41f5-86ef-b6edc3e5cec6"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""882bcf44-b180-4aef-b858-b840ca6b5497"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",

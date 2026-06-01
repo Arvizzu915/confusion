@@ -15,7 +15,6 @@ public class ACHealthSystem : MonoBehaviour
 
     private void Start()
     {
-        animator = enemyManager.animator;
     }
 
     public void TakeDamage(int damage)

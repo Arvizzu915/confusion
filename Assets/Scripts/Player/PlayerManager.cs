@@ -39,6 +39,14 @@ public class PlayerManager : MonoBehaviour
 
     public void OpenInventory(InputAction.CallbackContext ctx)
     {
-        ObjectsInventory.instance.OpenInventory();
+        if (!ObjectsInventory.instance.menuOpen)
+        {
+            ObjectsInventory.instance.OpenInventory();
+        }
+        else
+        {
+            ObjectsInventory.instance.CloseMenu();
+        }
+        
     }
 }
