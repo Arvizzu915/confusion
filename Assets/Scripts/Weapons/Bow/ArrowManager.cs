@@ -7,6 +7,11 @@ public class ArrowManager : MonoBehaviour
     public Rigidbody rb;
     public Collider coll;
 
+    private void OnEnable()
+    {
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         arrowSO.HitObject(collision, this);

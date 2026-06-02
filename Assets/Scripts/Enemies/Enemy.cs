@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyManager : MonoBehaviour, IShootable
+public abstract class Enemy : MonoBehaviour, IShootable
 {
-    public abstract void GetShot();
+    public bool playerInsideRoom;
 
-    public abstract void Attack();
+    public abstract void GetShot(int damage);
+
+    public virtual void SetEnemyInsideRoom(bool value)
+    {
+        playerInsideRoom = value;
+    }
+
 }
