@@ -8,10 +8,7 @@ public class ArrowSO : ScriptableObject
 
     public virtual void HitObject(Collision collision, ArrowManager manager)
     {
-        manager.transform.SetParent(collision.transform, true);
-
-        manager.coll.isTrigger = true;
-        manager.rb.isKinematic = true;
+        manager.StickWithJoint(collision);
 
         if (collision.gameObject.TryGetComponent(out IShootable shootable))
         {

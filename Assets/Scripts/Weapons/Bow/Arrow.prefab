@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4059842878484426620}
   - component: {fileID: 7285276545612389661}
   - component: {fileID: -5071316230160887704}
+  - component: {fileID: -2555061120453883589}
   m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
@@ -158,3 +159,20 @@ MonoBehaviour:
   arrowSO: {fileID: 11400000, guid: 71d396a005437664193c2aae2ebdc342, type: 2}
   rb: {fileID: 7285276545612389661}
   coll: {fileID: 4059842878484426620}
+  joint: {fileID: -2555061120453883589}
+--- !u!138 &-2555061120453883589
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112142266451996014}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
