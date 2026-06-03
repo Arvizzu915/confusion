@@ -152,11 +152,39 @@ public class ObjectsInventory : MonoBehaviour
 
     public void AddItemToInventory(Item newItem)
     {
+        if (newItem.cumulative)
+        {
+            slotButtons[selectedIndex].AddCumulative(newItem.quantity);
+        }
+        else
+        {
+            slotButtons[selectedIndex].AddItemToButton(newItem);
+        }
+
         PlayerDetectInteract.instance.inspectCamera.SetActive(false);
-        slotButtons[selectedIndex].AddItemToButton(newItem);
+        
         currentPickable.gameObject.SetActive(false);
         ChangeMode(selectMode);
         CloseMenu();
+    }
+
+    public void AddItemAutomatic(PickableObject newItem)
+    {
+        currentPickable = newItem;
+
+        for (int i = 0; i < slotButtons.Length; i++)
+        {
+            ItemSlotUI slot = slotButtons[i];
+
+            if (!slot.occupied || slot.item.name == newItem.item.name)
+            {
+                selectedIndex = i;
+                AddItemToInventory(newItem.item);
+                return;
+            }
+        }
+
+        TryPickObject(newItem);
     }
 
     private void SyncSelectedIndexWithEventSystem()

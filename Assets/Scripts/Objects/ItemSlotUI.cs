@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,10 @@ public class ItemSlotUI : MonoBehaviour
     public Button button;
 
     [SerializeField] private Image itemImage;
+    [SerializeField] private TextMeshProUGUI itemCounterText;
 
     public bool occupied = false;
+    public int currentItems = 0;
 
     private void Awake()
     {
@@ -46,6 +49,16 @@ public class ItemSlotUI : MonoBehaviour
         itemImage.color = c;
     }
 
+    public void RemoveCumulative()
+    {
+        currentItems--;
+
+        if (currentItems <= 0)
+        {
+            RemoveItem();
+        }
+    }
+
     public void AddItemToButton(Item newItem)
     {
         item = newItem;
@@ -57,5 +70,13 @@ public class ItemSlotUI : MonoBehaviour
 
         itemImage.sprite = item.icon;
         itemImage.color = Color.white;
+    }
+
+    public void AddCumulative(int quantity)
+    {
+        currentItems += quantity;
+
+        itemCounterText.gameObject.SetActive(true);
+        itemCounterText.text = currentItems.ToString();
     }
 }

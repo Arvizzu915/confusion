@@ -9,4 +9,7 @@ public class Item : ScriptableObject
     public string itemName;
 
     public Sprite icon;
+
+    public bool cumulative = false;
+    public int quantity = 3;
 }

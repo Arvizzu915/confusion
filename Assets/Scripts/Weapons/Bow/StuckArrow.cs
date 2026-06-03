@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class StuckArrow : MonoBehaviour
+public class StuckArrow : PickableObject
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Collider coll;
     [SerializeField] private FixedJoint joint;
 
     public void ResetArrow()
@@ -14,9 +13,6 @@ public class StuckArrow : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
         rb.isKinematic = false;
-
-        if (coll != null)
-            coll.enabled = false;
     }
 
     public void StickTo(Rigidbody targetRb)
@@ -36,5 +32,10 @@ public class StuckArrow : MonoBehaviour
     public void ReturnToPool()
     {
         ArrowPool.Instance.ReturnStuckArrow(this);
+    }
+
+    public override void Interact(PlayerManager player)
+    {
+        ObjectsInventory.instance.AddItemAutomatic(this);
     }
 }
