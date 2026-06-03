@@ -41,6 +41,9 @@ public class ItemSlotUI : MonoBehaviour
 
     public void RemoveItem()
     {
+        currentItems = 0;
+        itemCounterText.gameObject.SetActive(false);
+
         item = null;
         occupied = false;
 
@@ -64,19 +67,22 @@ public class ItemSlotUI : MonoBehaviour
         item = newItem;
         occupied = true;
 
-        Color c = itemImage.color;
-        c.a = 1f;
-        itemImage.color = c;
-
-        itemImage.sprite = item.icon;
-        itemImage.color = Color.white;
+        SetImage();
     }
 
-    public void AddCumulative(int quantity)
+    public void AddCumulative(Item newItem, int quantity)
     {
-        currentItems += quantity;
+        if (currentItems <= 0)
+        {
+            item = newItem;
+            occupied = true;
 
-        itemCounterText.gameObject.SetActive(true);
+            itemCounterText.gameObject.SetActive(true);
+
+            SetImage();
+        }
+
+        currentItems += quantity;
         itemCounterText.text = currentItems.ToString();
     }
 }

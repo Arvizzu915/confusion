@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d8efda263850c64ba960cc9ea9c8502, type: 3}
-  m_Name: Arrows
+  m_Name: SingleArrow
   m_EditorClassIdentifier: Assembly-CSharp::Item
   index: 1
   itemName: Arrows
   icon: {fileID: 21300000, guid: 36e6f28d4f19cc8408d42628550d3af7, type: 3}
   cumulative: 1
-  quantity: 3
+  quantity: 1

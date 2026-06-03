@@ -154,7 +154,7 @@ public class ObjectsInventory : MonoBehaviour
     {
         if (newItem.cumulative)
         {
-            slotButtons[selectedIndex].AddCumulative(newItem.quantity);
+            slotButtons[selectedIndex].AddCumulative(newItem, newItem.quantity);
         }
         else
         {

@@ -159,7 +159,7 @@ MonoBehaviour:
   interactText: Pick up
   canInteract: 1
   inspectable: 0
-  item: {fileID: 11400000, guid: 337ec0827a10087438d3b9f6cbc8646e, type: 2}
+  item: {fileID: 11400000, guid: ae2aa90c1c3611946921daff6b174561, type: 2}
   interactScript: {fileID: 0}
   rb: {fileID: 4658310418254219093}
   joint: {fileID: 4870224537088452188}
