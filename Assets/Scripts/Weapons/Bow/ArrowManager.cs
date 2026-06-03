@@ -1,4 +1,4 @@
-    using UnityEngine;
+using UnityEngine;
 
 public class ArrowManager : MonoBehaviour
 {
@@ -6,64 +6,34 @@ public class ArrowManager : MonoBehaviour
 
     public Rigidbody rb;
     public Collider coll;
-    public FixedJoint joint;
 
-    private bool stuck;
+    private bool hasHit;
 
-    private void OnEnable()
+    public void ResetArrow()
     {
-        stuck = false;
+        hasHit = false;
 
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.detectCollisions = true;
 
         coll.enabled = true;
         coll.isTrigger = false;
-
-        DisableJoint();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
+        if (hasHit) return;
+
+        hasHit = true;
 
         arrowSO.HitObject(collision, this);
     }
 
-    public void StickWithJoint(Collision collision)
+    public void ReturnToPool()
     {
-        if (stuck) return;
-
-        stuck = true;
-
-        Rigidbody hitRb = collision.collider.attachedRigidbody;
-
-        rb.linearVelocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
-        rb.isKinematic = false;
-        rb.useGravity = false;
-
-        coll.enabled = false;
-
-        if (hitRb != null)
-        {
-            joint.connectedBody = hitRb;
-            joint.enableCollision = false;
-            joint.breakForce = Mathf.Infinity;
-            joint.breakTorque = Mathf.Infinity;
-        }
-        else
-        {
-            rb.isKinematic = true;
-        }
-    }
-
-    private void DisableJoint()
-    {
-        joint.connectedBody = null;
-        joint.breakForce = 0f;
-        joint.breakTorque = 0f;
+        ArrowPool.Instance.ReturnFlyingArrow(this);
     }
 }

@@ -42,17 +42,14 @@ public class NormalBowSO : BowSO
         Quaternion rotation = Quaternion.LookRotation(combat.aimingDirection);
         rotation *= Quaternion.Euler(90f, 0f, 0f);
 
-        GameObject arrow = Instantiate(
-            bowMan.currentArrow,
-            bowMan.arrowSpwnPos.position,
-            rotation
+        ArrowManager arrow = ArrowPool.Instance.GetFlyingArrow(
+        bowMan.arrowSpwnPos.position,
+        rotation
         );
 
-        Rigidbody rb = arrow.GetComponent<Rigidbody>();
-
-        rb.AddForce(
-            heldTime * shootForce * combat.aimingDirection,
-            ForceMode.Impulse
+        arrow.rb.AddForce(
+        heldTime * shootForce * combat.aimingDirection,
+        ForceMode.Impulse
         );
 
         combat.bowManager.PlayAnimClip("BowRecharge");
