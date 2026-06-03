@@ -28,7 +28,7 @@ public class InventoryModeAdding : InventoryMode
     {
         if (newItem == null) return;
 
-        if (inventory.slotButtons[inventory.selectedIndex].occupied)
+        if (inventory.slotButtons[inventory.selectedIndex].occupied && inventory.slotButtons[inventory.selectedIndex].item.index != newItem.index)
         {
             Debug.Log("can't do sowwy");
         }

@@ -176,7 +176,7 @@ public class ObjectsInventory : MonoBehaviour
         {
             ItemSlotUI slot = slotButtons[i];
 
-            if (!slot.occupied || slot.item.name == newItem.item.name)
+            if (!slot.occupied || slot.item.index == newItem.item.index)
             {
                 selectedIndex = i;
                 AddItemToInventory(newItem.item);
