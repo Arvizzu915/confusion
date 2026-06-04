@@ -124,10 +124,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext ctx)
     {
+
+
+
+
+        /*
         if (isGrounded)
         {
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -gravity);
         }
+        */
     }
 
     private void Run(InputAction.CallbackContext ctx)

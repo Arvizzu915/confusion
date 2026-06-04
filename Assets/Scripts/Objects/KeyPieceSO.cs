@@ -43,7 +43,7 @@ public class KeyPiece : PickableObject
         PlayerDetectInteract.instance.inspectCamera.SetActive(true);
 
         StartCoroutine(MoveToInspectPoint(PlayerDetectInteract.instance.inspectPoint));
-        StartCoroutine(TurnOnInspectLight());
+        //StartCoroutine(TurnOnInspectLight());
 
         coll.enabled = false;
 
@@ -51,7 +51,7 @@ public class KeyPiece : PickableObject
 
         interactScript.currentKeyPiece = this;
 
-        interactScript.flashlight.SetActive(false);
+        //interactScript.flashlight.SetActive(false);
 
         Time.timeScale = 0;
 
@@ -77,7 +77,7 @@ public class KeyPiece : PickableObject
         base.CancelAdd();
 
         PlayerDetectInteract.instance.checkingObject = false;
-        interactScript.flashlight.SetActive(true);
+        //interactScript.flashlight.SetActive(true);
         PlayerDetectInteract.instance.inspectCamera.SetActive(false);
 
         StartCoroutine(MoveToStartPoint());

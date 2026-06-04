@@ -52,6 +52,8 @@ public class PlayerDetectInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, detectRayLength, detectLayer))
         {
+            Debug.Log(hit.collider.name);
+
             if (hit.transform.TryGetComponent(out Interactuable interactable))
             {
                 Debug.DrawRay(ray.origin, ray.direction * detectRayLength, Color.green);

@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 46.5
+    FieldOfView: 28.5
     OrthographicSize: 10
     NearClipPlane: 0.02
     FarClipPlane: 5000
@@ -3265,7 +3265,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 67
+    FieldOfView: 48
     OrthographicSize: 10
     NearClipPlane: 0.02
     FarClipPlane: 5000
@@ -12219,6 +12219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1782925350}
+  - component: {fileID: 1782925351}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -12234,15 +12235,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782925349}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.9937407, z: -0, w: 0.11171185}
+  m_LocalPosition: {x: 10.610088, y: 3.572, z: 19.198769}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 978629589}
   - {fileID: 1021568835}
-  m_Father: {fileID: 2859830794131673975}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782925351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782925349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4004f2e5ecd83649bef0514f16f33d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Flashlight
+  target: {fileID: 2859830794131673975}
+  rotationSmoothTime: 0.16
 --- !u!1 &1794905971
 GameObject:
   m_ObjectHideFlags: 0
@@ -14647,7 +14662,6 @@ Transform:
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1782925350}
   - {fileID: 347258453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14993,7 +15007,7 @@ Camera:
     height: 1
   near clip plane: 0.02
   far clip plane: 5000
-  field of view: 67
+  field of view: 48
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -15233,7 +15247,7 @@ MonoBehaviour:
   inspectCamera: {fileID: 846710888}
   zoomCamera: {fileID: 275816371}
   inspectLight: {fileID: 1140358404}
-  flashlight: {fileID: 0}
+  flashlight: {fileID: 1782925349}
   bow: {fileID: 141661031}
 --- !u!65 &6486829607206460421
 BoxCollider:
@@ -15504,6 +15518,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1605085880}
+  - {fileID: 1782925350}
   - {fileID: 2859830794131673975}
   - {fileID: 2111864043}
   - {fileID: 706846462}
