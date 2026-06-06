@@ -53,8 +53,6 @@ public class KeyPiece : PickableObject
 
         //interactScript.flashlight.SetActive(false);
 
-        Time.timeScale = 0;
-
         PlayerManager.instance.PlayerUIManager.ActivateCheckingObjectText(true);
         PlayerManager.instance.PlayerUIManager.CanInteract(false, "");
 

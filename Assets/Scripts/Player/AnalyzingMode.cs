@@ -36,7 +36,6 @@ public class AnalyzingMode : MonoBehaviour
         PlayerManager.instance.PlayerUIManager.CanInteract(false, "");
         PlayerDetectInteract.instance.analyzing = true;
         PlayerDetectInteract.instance.bow.SetActive(false);
-        Time.timeScale = 0.0f;
     }
 
     private void ExitAnalyze(InputAction.CallbackContext context)
@@ -53,7 +52,6 @@ public class AnalyzingMode : MonoBehaviour
         PlayerDetectInteract.instance.analyzing = false;
         LevelCanvas.instance.ChangeToPlayingHUD();
         PlayerDetectInteract.instance.bow.SetActive(true);
-        Time.timeScale = 1.0f;
 
         currentObj.StopInspecting();
         currentObj = null;
@@ -86,6 +84,6 @@ public class AnalyzingMode : MonoBehaviour
         currentObj.UseItem(item.index);
 
 
-        Debug.Log("Using item: " + item.itemName);
+        //Debug.Log("Using item: " + item.itemName);
     }
 }

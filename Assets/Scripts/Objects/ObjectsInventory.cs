@@ -11,6 +11,7 @@ public class ObjectsInventory : MonoBehaviour
 
     [Header("References")]
     public ItemSlotUI[] slotButtons;
+    public CanvasGroup selectInputs, addingInputs;
 
     public int selectedIndex = 0;
     public bool menuOpen = false;
@@ -104,29 +105,28 @@ public class ObjectsInventory : MonoBehaviour
         if (selectedItem != null)
         {
             SelectObject(selectedItem);
+            LevelCanvas.instance.OpenInventory(addingInputs);
+        }
+        else
+        {
+            LevelCanvas.instance.OpenInventory(selectInputs);
         }
 
         menuOpen = true;
 
-        LevelCanvas.instance.OpenInventoryHUD();
+        
 
         selectedIndex = 0;
         SelectSlot(selectedIndex);
-
-        Time.timeScale = 0f;
     }
 
     public void CloseMenu()
     {
         if (!menuOpen) return;
 
-        LevelCanvas.instance.ChangeToPlayingHUD();
-
-        InputManager.Instance.SwitchToGameplay();
+        LevelCanvas.instance.CloseInventory();
 
         menuOpen = false;
-
-        Time.timeScale = 1f;
     }
 
     public void SelectObject(Item newItem)

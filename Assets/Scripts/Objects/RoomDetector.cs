@@ -9,7 +9,6 @@ public class RoomDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
 
         if (!other.CompareTag("Player")) return;
 

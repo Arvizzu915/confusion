@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent (typeof(CharacterController))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
@@ -10,14 +10,22 @@ public class PlayerMovement : MonoBehaviour
     public InputManager inputManager;
 
     public CharacterController controller;
-    [SerializeField] private float currentSpeed, normalSpeed = 3, runningSpeed = 7, crouchingSpeed = 1.5f;
+
+    [Header("Speed")]
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float targetSpeed;
+    [SerializeField] private float normalSpeed = 3f;
+    [SerializeField] private float runningSpeed = 7f;
+    [SerializeField] private float crouchingSpeed = 1.5f;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private float deceleration = 14f;
+
     [SerializeField] private float gravity = -10f;
 
-    private bool canMove = true, running = false;
+    private bool canMove = true;
+    private bool running = false;
 
     public bool isGrounded = true;
-    [SerializeField] private float jumpHeight = 3;
-
     public Vector3 playerVelocity;
 
     [Header("Ground Check Settings")]
@@ -27,23 +35,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheckOrigin;
 
     [Header("Crouching Settings")]
-    [SerializeField] float standingHeight = 2f;
-    [SerializeField] float crouchingHeight = 1f;
+    [SerializeField] private float standingHeight = 2f;
+    [SerializeField] private float crouchingHeight = 1f;
 
+    [SerializeField] private Vector3 standingCenter = new(0, 1f, 0);
+    [SerializeField] private Vector3 crouchingCenter = new(0, 0.5f, 0);
 
-    [SerializeField] Vector3 standingCenter = new(0, 1f, 0);
-    [SerializeField] Vector3 crouchingCenter = new(0, 0.5f, 0);
+    private float targetHeight = 2f;
+    private Vector3 targetCenter = new(0, 1f, 0);
 
-    float targetHeight = 2;
-    Vector3 targetCenter = new(0, 1f, 0);
+    private bool isCrouching = false;
 
-    bool isCrouching = false;
-
-    //Inputs
     public PlayerInput inputs;
 
     private InputAction move;
+
     public Vector3 moveDirection;
+    private Vector3 movementDirection;
 
     private void Awake()
     {
@@ -55,79 +63,144 @@ public class PlayerMovement : MonoBehaviour
         targetHeight = standingHeight;
         targetCenter = standingCenter;
 
-        currentSpeed = normalSpeed;
+        currentSpeed = 0f;
+        targetSpeed = 0f;
 
         move = inputManager.inputs.Playing.Move;
 
         inputManager.inputs.Playing.Jump.started += Jump;
-
         inputManager.inputs.Playing.Run.started += Run;
-
         inputManager.inputs.Playing.Crouch.started += ctx => SetCrouch(true);
         inputManager.inputs.Playing.Crouch.canceled += ctx => SetCrouch(false);
     }
 
-
-
     private void OnDisable()
     {
         inputManager.inputs.Playing.Jump.started -= Jump;
-
         inputManager.inputs.Playing.Run.started -= Run;
     }
 
-
     private void Update()
     {
-        controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * 10f);
-        controller.center = Vector3.Lerp(controller.center, targetCenter, Time.deltaTime * 10f);
+        UpdateControllerHeight();
+        ReadMovementInput();
+        UpdateMovementState();
+        UpdateSpeed();
+        ApplyGravity();
+        MovePlayer();
+    }
 
+    private void UpdateControllerHeight()
+    {
+        controller.height = Mathf.Lerp(
+            controller.height,
+            targetHeight,
+            Time.deltaTime * 10f
+        );
 
-        if (running)
+        controller.center = Vector3.Lerp(
+            controller.center,
+            targetCenter,
+            Time.deltaTime * 10f
+        );
+    }
+
+    private void ReadMovementInput()
+    {
+        Vector2 input = canMove ? move.ReadValue<Vector2>() : Vector2.zero;
+
+        moveDirection = new Vector3(input.x, 0f, input.y);
+
+        if (moveDirection.sqrMagnitude > 1f)
         {
-            currentSpeed = runningSpeed;
+            moveDirection.Normalize();
         }
 
-        if (move.ReadValue<Vector2>().y <= .2 && !isCrouching)
+        if (moveDirection.sqrMagnitude > 0.01f)
+        {
+            movementDirection = transform.TransformDirection(moveDirection);
+        }
+    }
+
+    private void UpdateMovementState()
+    {
+        bool hasInput = moveDirection.sqrMagnitude > 0.01f;
+
+        if (!hasInput)
         {
             running = false;
-            currentSpeed = normalSpeed;
+            targetSpeed = 0f;
+            PlayerManager.playerAnim.SetTrigger("Running", false);
+            return;
+        }
 
+        if (moveDirection.z <= 0.2f && !isCrouching)
+        {
+            running = false;
             PlayerManager.playerAnim.SetTrigger("Running", false);
         }
 
-        if (canMove)
+        if (isCrouching)
         {
-            moveDirection.x = move.ReadValue<Vector2>().x;
-            moveDirection.z = move.ReadValue<Vector2>().y;
+            targetSpeed = crouchingSpeed;
         }
+        else if (running)
+        {
+            targetSpeed = runningSpeed;
+        }
+        else
+        {
+            targetSpeed = normalSpeed;
+        }
+    }
 
+    private void UpdateSpeed()
+    {
+        float speedChangeRate = targetSpeed > currentSpeed
+            ? acceleration
+            : deceleration;
+
+        currentSpeed = Mathf.MoveTowards(
+            currentSpeed,
+            targetSpeed,
+            speedChangeRate * Time.deltaTime
+        );
+
+        if (currentSpeed < 0.01f)
+        {
+            currentSpeed = 0f;
+        }
+    }
+
+    private void ApplyGravity()
+    {
         CheckGround();
 
-        if (playerVelocity.y > -50)
+        if (playerVelocity.y > -50f)
         {
             playerVelocity.y += gravity * Time.deltaTime;
         }
         else
         {
-            playerVelocity.y = -50;
+            playerVelocity.y = -50f;
         }
 
-        if (isGrounded && playerVelocity.y < 0)
+        if (isGrounded && playerVelocity.y < 0f)
         {
-            playerVelocity.y = -2;
+            playerVelocity.y = -2f;
         }
+    }
 
-        controller.Move((currentSpeed * transform.TransformDirection(moveDirection) + playerVelocity) * Time.deltaTime);
+    private void MovePlayer()
+    {
+        Vector3 horizontalMovement = movementDirection * currentSpeed;
+        Vector3 finalMovement = horizontalMovement + playerVelocity;
 
+        controller.Move(finalMovement * Time.deltaTime);
     }
 
     private void Jump(InputAction.CallbackContext ctx)
     {
-
-
-
-
         /*
         if (isGrounded)
         {
@@ -141,15 +214,14 @@ public class PlayerMovement : MonoBehaviour
         if (!isGrounded || isCrouching || PlayerCombat.Instance.aiming) return;
 
         running = true;
-
         PlayerManager.playerAnim.SetTrigger("Running", true);
     }
-
 
     private void CheckGround()
     {
         if (groundCheckOrigin == null)
             groundCheckOrigin = transform;
+
         isGrounded = Physics.SphereCast(
             groundCheckOrigin.position,
             sphereRadius,
@@ -164,9 +236,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (crouch)
         {
-            currentSpeed = crouchingSpeed;
             targetHeight = crouchingHeight;
             targetCenter = crouchingCenter;
+
             isCrouching = true;
             running = false;
         }
@@ -174,10 +246,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!CanStand()) return;
 
-            currentSpeed = normalSpeed;
             targetHeight = standingHeight;
             targetCenter = standingCenter;
-            currentSpeed = normalSpeed;
+
             isCrouching = false;
         }
 
@@ -187,10 +258,9 @@ public class PlayerMovement : MonoBehaviour
     public void StopRunning()
     {
         running = false;
-        currentSpeed = normalSpeed;
     }
 
-    bool CanStand()
+    private bool CanStand()
     {
         float checkDistance = standingHeight - crouchingHeight;
 
@@ -210,19 +280,20 @@ public class PlayerMovement : MonoBehaviour
             groundCheckOrigin = transform;
 
         Gizmos.color = isGrounded ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(groundCheckOrigin.position + Vector3.down * sphereDistance, sphereRadius);
+        Gizmos.DrawWireSphere(
+            groundCheckOrigin.position + Vector3.down * sphereDistance,
+            sphereRadius
+        );
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody rb = hit.collider.attachedRigidbody;
 
         if (rb == null || rb.isKinematic) return;
-
-        // Optional: don't push downward
         if (hit.moveDirection.y < -0.3f) return;
 
-        Vector3 pushDir = new(hit.moveDirection.x, 0, hit.moveDirection.z);
+        Vector3 pushDir = new(hit.moveDirection.x, 0f, hit.moveDirection.z);
 
         float pushForce = .5f;
 

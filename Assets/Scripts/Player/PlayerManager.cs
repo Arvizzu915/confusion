@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public CameraLook cameraLook;
 
     public Transform pocketPosition;
+    public CanvasGroup selectingInputs;
 
     private void Awake()
     {
