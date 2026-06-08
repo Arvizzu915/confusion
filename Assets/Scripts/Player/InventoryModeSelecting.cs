@@ -21,4 +21,9 @@ public class InventoryModeSelecting : InventoryMode
     {
         inventory.ChangeMode(inventory.moveMode);
     }
+
+    public override void OnChangeSlot(ObjectsInventory inventory)
+    {
+        inventory.UpdateItemInfo();
+    }
 }

@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     public InputManager inputManager;
 
     [Header("Weapon")]
-    public BowSO currentWeaponSO = null;
+    public WeaponSO currentWeaponSO = null;
     public BowManager bowManager;
     public GameObject weapon;
 
@@ -96,27 +96,28 @@ public class PlayerCombat : MonoBehaviour
     {
         if (ctx.performed)
         {
+            currentWeaponSO.Aim(playerManager, this);
+
             PlayerMovement.instance.StopRunning();
 
             if (aimCoyoteCoroutine != null)
                 StopCoroutine(aimCoyoteCoroutine);
-
-            aiming = true;
-            canShootAfterAim = true;
-
-            aimingCamera.SetActive(true);
-            currentWeaponSO.Aim(playerManager, this);
         }
         else if (ctx.canceled)
         {
-            aiming = false;
-            aimingCamera.SetActive(false);
-
-            if (aimCoyoteCoroutine != null)
-                StopCoroutine(aimCoyoteCoroutine);
-
-            aimCoyoteCoroutine = StartCoroutine(ShootCoyoteTime());
+            StopAiming();
         }
+    }
+
+    public void StopAiming()
+    {
+        aiming = false;
+        aimingCamera.SetActive(false);
+
+        if (aimCoyoteCoroutine != null)
+            StopCoroutine(aimCoyoteCoroutine);
+
+        aimCoyoteCoroutine = StartCoroutine(ShootCoyoteTime());
     }
 
     private IEnumerator ShootCoyoteTime()
@@ -145,7 +146,7 @@ public class PlayerCombat : MonoBehaviour
         canShoot = true;
     }
 
-    public void EquipWeapon(GameObject weapon, BowSO newWeaponSO)
+    public void EquipWeapon(GameObject weapon, WeaponSO newWeaponSO)
     {
         currentWeaponSO = newWeaponSO;
 

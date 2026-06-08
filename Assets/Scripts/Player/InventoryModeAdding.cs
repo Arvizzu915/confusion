@@ -37,4 +37,9 @@ public class InventoryModeAdding : InventoryMode
             inventory.AddItemToInventory(newItem);
         }
     }
+
+    public override void OnChangeSlot(ObjectsInventory inventory)
+    {
+
+    }
 }

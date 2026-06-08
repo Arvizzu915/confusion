@@ -8,4 +8,6 @@ public abstract class InventoryMode
 
     public abstract void MoveMode(ObjectsInventory inventory);
 
+    public abstract void OnChangeSlot(ObjectsInventory inventory);
+
 }

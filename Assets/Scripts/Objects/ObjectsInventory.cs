@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ public class ObjectsInventory : MonoBehaviour
     [Header("References")]
     public ItemSlotUI[] slotButtons;
     public CanvasGroup selectInputs, addingInputs;
+    public TextMeshProUGUI itemName, itemDescription;
 
     public int selectedIndex = 0;
     public bool menuOpen = false;
@@ -90,6 +92,8 @@ public class ObjectsInventory : MonoBehaviour
         selectedIndex = index;
 
         EventSystem.current.SetSelectedGameObject(slotButtons[selectedIndex].gameObject);
+
+        currentMode.OnChangeSlot(this);
     }
 
     public void OpenInventory()
@@ -199,6 +203,21 @@ public class ObjectsInventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void UpdateItemInfo()
+    {
+        ItemSlotUI slot = slotButtons[selectedIndex];
+
+        if (!slot.occupied || slot.item == null)
+        {
+            itemName.text = "";
+            itemDescription.text = "";
+            return;
+        }
+
+        itemName.text = slot.item.itemName;
+        itemDescription.text = slot.item.description;
     }
 
     public void Confirm(InputAction.CallbackContext ctx)

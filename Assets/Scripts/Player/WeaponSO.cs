@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BowSO : ScriptableObject
+public abstract class WeaponSO : ScriptableObject
 {
     [SerializeField] GameObject weaponGO;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NormalBow", menuName = "Bows/NormalBow")]
-public class NormalBowSO : BowSO
+public class NormalBowSO : WeaponSO
 {
     public float holdingTimeLimit = 2f;
     public float shootForce = 5f;
@@ -54,6 +54,8 @@ public class NormalBowSO : BowSO
 
         combat.bowManager.PlayAnimClip("BowRecharge");
         combat.StartCoroutine(combat.RechargeWeaponCoroutine());
+
+        combat.StopAiming();
     }
 
     public override void WeaponUpdate(PlayerCombat combat, PlayerManager manager)
@@ -71,5 +73,15 @@ public class NormalBowSO : BowSO
         base.CancelAiming(manager, combat);
 
         pulling = false;
+    }
+
+    public override void Aim(PlayerManager manager, PlayerCombat combat)
+    {
+        base.Aim(manager, combat);
+
+        combat.aiming = true;
+        combat.canShootAfterAim = true;
+
+        combat.aimingCamera.SetActive(true);
     }
 }

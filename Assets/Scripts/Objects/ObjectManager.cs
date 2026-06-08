@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObjectManager : Interactuable
 {
-    [SerializeField] BowSO weaponSO;
+    [SerializeField] WeaponSO weaponSO;
 
     public override void Interact(PlayerManager player)
     {

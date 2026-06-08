@@ -21,4 +21,8 @@ public class InventoryModeMoving : InventoryMode
     {
         
     }
+    public override void OnChangeSlot(ObjectsInventory inventory)
+    {
+
+    }
 }

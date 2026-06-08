@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item
   index: 0
   itemName: Main hall key
+  description: The key to open the main hall door.
   icon: {fileID: 21300000, guid: 3151829ade7c97148a2c87721576fcd5, type: 3}
+  cumulative: 0
+  quantity: 3

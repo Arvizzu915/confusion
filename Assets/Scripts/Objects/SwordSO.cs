@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Sword", menuName = "Weapons/Swords")]
-public class SwordSO : BowSO
+public class SwordSO : WeaponSO
 {
     public override void Use(PlayerManager player, PlayerCombat combat)
     {
