@@ -14,7 +14,7 @@ public class InventoryModeMoving : InventoryMode
 
     public override void EscapeMode(ObjectsInventory inventory)
     {
-        
+        inventory.ChangeMode(inventory.selectMode);
     }
 
     public override void MoveMode(ObjectsInventory inventory)
