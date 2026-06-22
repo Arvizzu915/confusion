@@ -4,7 +4,7 @@ public abstract class IInspectionable : Interactuable
 {
     [SerializeField] private GameObject inspectingCamera;
 
-    [SerializeField] private int index;
+    public int index;
 
     public override void Interact(PlayerManager player)
     {
@@ -14,8 +14,6 @@ public abstract class IInspectionable : Interactuable
     public virtual void Inspect()
     {
         AnalyzingMode.Instance.currentObj = this;
-        AnalyzingMode.Instance.EnterAnalyzeMode();
-
         inspectingCamera.SetActive(true);
     }
 
