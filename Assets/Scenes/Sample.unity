@@ -11903,7 +11903,7 @@ GameObject:
   - component: {fileID: 1286293743}
   - component: {fileID: 1286293742}
   m_Layer: 3
-  m_Name: BigLight (1)
+  m_Name: BigLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11964,8 +11964,8 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 0.9999978, b: 0.9009434, a: 1}
-  m_Intensity: 24.8
-  m_Range: 50.1
+  m_Intensity: 25
+  m_Range: 35
   m_SpotAngle: 63.221252
   m_InnerSpotAngle: 18.280851
   m_CookieSize2D: {x: 0.5, y: 0.5}
@@ -15791,7 +15791,7 @@ Transform:
   m_GameObject: {fileID: 1782925349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9937407, z: 0, w: 0.11171185}
-  m_LocalPosition: {x: 9.986, y: 3.572, z: 18.606}
+  m_LocalPosition: {x: 11.260088, y: 3.572, z: 18.89577}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18739,7 +18739,7 @@ Transform:
   m_GameObject: {fileID: 6732114798269321057}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.9937407, z: 0, w: 0.11171185}
-  m_LocalPosition: {x: 9.986, y: 3.572, z: 18.606}
+  m_LocalPosition: {x: 11.260088, y: 3.572, z: 18.89577}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18755,7 +18755,7 @@ Transform:
   m_GameObject: {fileID: 2973578300844205466}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9937407, z: -0, w: 0.11171185}
-  m_LocalPosition: {x: 10.085912, y: 2.072, z: 18.167233}
+  m_LocalPosition: {x: 11.36, y: 2.072, z: 18.457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19121,11 +19121,11 @@ MonoBehaviour:
   PlayerManager: {fileID: 8033320522707342316}
   inputManager: {fileID: 4893416608240539522}
   controller: {fileID: 2930521189661000277}
-  currentSpeed: 2.7
+  currentSpeed: 1.7
   targetSpeed: 0
-  normalSpeed: 2.7
-  runningSpeed: 5
-  crouchingSpeed: 1.4
+  normalSpeed: 2.3
+  runningSpeed: 5.2
+  crouchingSpeed: 1
   acceleration: 10
   deceleration: 14
   gravity: -25

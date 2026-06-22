@@ -1,11 +1,21 @@
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class Flashlight : MonoBehaviour
 {
+    public static Flashlight instance;
+
+    [SerializeField] private SpotLight lightComp;
+
     [SerializeField] private Transform target;
     [SerializeField] private float rotationSmoothTime = 0.12f;
 
     private Vector3 angularVelocity;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void LateUpdate()
     {
@@ -24,4 +34,19 @@ public class Flashlight : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(smoothEuler);
     }
+
+    public void ChangeToInspectingLight(bool turnOnOff)
+    {
+        if (turnOnOff)
+        {
+            lightComp.range = 5;
+        }
+        else
+        {
+            lightComp.range = 25;
+        }
+        
+    }
+
+
 }
