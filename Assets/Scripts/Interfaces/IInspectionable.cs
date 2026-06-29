@@ -22,7 +22,7 @@ public abstract class IInspectionable : Interactuable
         inspectingCamera.SetActive(false);
     }
 
-    public virtual void UseItem(int itemIndex)
+    public virtual void UseItem(int itemIndex, ItemSlotUI itemSlot)
     {
         if (index == itemIndex)
         {

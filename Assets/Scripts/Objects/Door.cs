@@ -3,111 +3,149 @@ using UnityEngine;
 
 public class Door : Interactuable
 {
-    [SerializeField] private Rigidbody rb;
+    private enum DoorState
+    {
+        Closed,
+        Nudged,
+        Opening,
+        Opened,
+        Closing
+    }
+
+    [Header("References")]
     [SerializeField] private HingeJoint hinge;
+    [SerializeField] private DoorTrigger trigger;
 
-    Quaternion initialLocalRotation;
-    private bool isOpen = false;
-    [SerializeField] float openTorque = 5f;
+    [Header("Angles")]
+    [SerializeField] private float nudgeAngle = 15f;
+    [SerializeField] private float openAngle = 90f;
+    [SerializeField] private float closedAngleTolerance = 2f;
 
-    [Header("Closed Settings")]
-    [SerializeField] float autoCloseAngleThreshold = 5f;
-    float openTimer = 0f;
-    [SerializeField] float autoCloseDelay = 0.5f;
+    [Header("Spring")]
+    [SerializeField] private float springStrength = 40f;
+    [SerializeField] private float springDamper = 8f;
+
+    [Header("Auto Close")]
+    [SerializeField] private float autoCloseDelay = 2f;
+
+    private DoorState state = DoorState.Closed;
+
+    private Coroutine movementRoutine;
+    private bool openPositive;
 
     private void Awake()
     {
-        initialLocalRotation = transform.localRotation;
+        trigger.Initialize(this);
 
-        SetClosedStateImmediate();
-    }
+        JointSpring spring = hinge.spring;
+        spring.spring = springStrength;
+        spring.damper = springDamper;
+        spring.targetPosition = 0;
+        hinge.spring = spring;
 
-    void Update()
-    {
-        if (!isOpen) return;
-
-        openTimer += Time.deltaTime;
-
-        if (openTimer < autoCloseDelay) return;
-
-        float angle = Quaternion.Angle(transform.localRotation, initialLocalRotation);
-
-        if (angle < autoCloseAngleThreshold && rb.angularVelocity.magnitude < 0.1f)
-        {
-            CloseDoor();
-        }
+        hinge.useSpring = true;
     }
 
     public override void Interact(PlayerManager player)
     {
-        if (isOpen)
+        if (state == DoorState.Opening || state == DoorState.Closing)
+            return;
+
+        switch (state)
         {
-            CloseDoor();
+            case DoorState.Closed:
+                Open(false);
+                break;
+
+            case DoorState.Nudged:
+                Open(true);
+                break;
+
+            case DoorState.Opened:
+                Close();
+                break;
+        }
+    }
+
+    private void Open(bool fullOpen)
+    {
+        openPositive = transform.InverseTransformPoint(PlayerManager.instance.transform.position).z >= 0;
+
+        float target = fullOpen ? openAngle : nudgeAngle;
+
+        if (!openPositive)
+            target = -target;
+
+        if (movementRoutine != null)
+            StopCoroutine(movementRoutine);
+
+        movementRoutine = StartCoroutine(MoveDoor(
+            fullOpen ? DoorState.Opening : DoorState.Nudged,
+            target));
+    }
+
+    public void Close()
+    {
+        if (movementRoutine != null)
+            StopCoroutine(movementRoutine);
+
+        movementRoutine = StartCoroutine(MoveDoor(DoorState.Closing, 0));
+    }
+
+    private IEnumerator MoveDoor(DoorState movingState, float targetAngle)
+    {
+        state = movingState;
+
+        JointSpring spring = hinge.spring;
+        spring.targetPosition = targetAngle;
+        hinge.spring = spring;
+        hinge.useSpring = true;
+
+        while (Mathf.Abs(hinge.angle - targetAngle) > 2f)
+            yield return null;
+
+        if (movingState == DoorState.Opening)
+        {
+            state = DoorState.Opened;
+
+            while (trigger.PlayerInside)
+                yield return null;
+
+            yield return new WaitForSeconds(autoCloseDelay);
+
+            if (!trigger.PlayerInside)
+                Close();
+        }
+        else if (movingState == DoorState.Closing)
+        {
+            while (Mathf.Abs(hinge.angle) > closedAngleTolerance)
+                yield return null;
+
+            state = DoorState.Closed;
         }
         else
         {
-            OpenDoor();
+            state = DoorState.Nudged;
         }
-    }
 
-    private void OpenDoor()
-    {
-        isOpen = true;
-        openTimer = 0f;
-
-        
-        rb.isKinematic = false;
-        rb.linearVelocity = Vector3.zero;
-
-        // Disable spring so it's free
-        var spring = hinge.spring;
-        spring.spring = 0f;
-        hinge.spring = spring;
-        hinge.useSpring = false;
-
-        // Determine push direction relative to door
-        Vector3 toPlayer = (PlayerManager.instance.transform.position - transform.position).normalized;
-
-        // Decide rotation direction (left/right)
-        float direction = Vector3.Dot(transform.right, toPlayer) > 0 ? 1f : -1f;
-
-        // Apply torque around hinge axis (usually Y)
-        rb.AddTorque(Vector3.up * openTorque, ForceMode.Impulse);
-    }
-
-    private void CloseDoor()
-    {
-        if (!isOpen) return;
-
-        isOpen = false;
-
-        rb.linearVelocity = Vector3.zero;
-        rb.isKinematic = false; // keep physics active
-
-        var spring = hinge.spring;
-        spring.spring = 50f;        // strength
-        spring.damper = 5f;         // smoothness
-        spring.targetPosition = 0f; // closed angle
-
-        hinge.spring = spring;
-        hinge.useSpring = true;
-    }
-
-    private void SetClosedStateImmediate()
-    {
-        rb.isKinematic = true;
-        transform.localRotation = initialLocalRotation;
+        movementRoutine = null;
     }
 
     public override void Hover()
     {
-        if (isOpen)
+        switch (state)
         {
-            PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, "Close");
-        }
-        else
-        {
-            PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, "Open");
+            case DoorState.Closed:
+                PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, "Nudge");
+                break;
+
+            case DoorState.Nudged:
+                PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, "Open");
+                break;
+
+            case DoorState.Opened:
+                PlayerManager.instance.PlayerUIManager.CanInteract(canInteract, "Close");
+                break;
         }
     }
 }

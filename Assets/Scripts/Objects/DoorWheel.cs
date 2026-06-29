@@ -6,13 +6,7 @@ public class DoorWheel : Interactuable
 
     public override void Interact(PlayerManager player)
     {
-        if (door.locked)
-        {
-            door.locked = false;
-        }
-        else
-        {
-            door.locked = true;
-        }
+        door.UnlockDoor();
+        gameObject.SetActive(false);
     }
 }

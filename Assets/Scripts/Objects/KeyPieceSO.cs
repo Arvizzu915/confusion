@@ -36,7 +36,7 @@ public class KeyPiece : PickableObject
 
     private void CheckObject()
     {
-
+        Flashlight.instance.ChangeToInspectingLight(false);
         PlayerDetectInteract.instance.checkingObject = true;
         PlayerManager.instance.inputManager.SwitchToInspect();
 
@@ -73,6 +73,7 @@ public class KeyPiece : PickableObject
     public override void CancelAdd()
     {
         base.CancelAdd();
+        Flashlight.instance.ChangeToInspectingLight(true);
 
         PlayerDetectInteract.instance.checkingObject = false;
         //interactScript.flashlight.SetActive(true);

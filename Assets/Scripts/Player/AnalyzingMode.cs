@@ -30,6 +30,8 @@ public class AnalyzingMode : MonoBehaviour
 
     public void EnterAnalyzeMode()
     {
+        Flashlight.instance.ChangeToInspectingLight(false);
+
         ObjectsInventory.instance.OpenMenu(null);
 
         InputManager.Instance.SwitchToAnalyze();
@@ -46,6 +48,7 @@ public class AnalyzingMode : MonoBehaviour
     public void ExitAnalyzeMode()
     {
         ObjectsInventory.instance.CloseMenu();
+        Flashlight.instance.ChangeToInspectingLight(true);
 
         PlayerDetectInteract.instance.checkingObject = false;
         InputManager.Instance.SwitchToGameplay();
@@ -81,7 +84,7 @@ public class AnalyzingMode : MonoBehaviour
 
         if (item == null) return;
 
-        currentObj.UseItem(item.index);
+        currentObj.UseItem(item.index, ObjectsInventory.instance.currentSlotButton);
 
 
         //Debug.Log("Using item: " + item.itemName);

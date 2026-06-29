@@ -5,7 +5,7 @@ public class Flashlight : MonoBehaviour
 {
     public static Flashlight instance;
 
-    [SerializeField] private SpotLight lightComp;
+    [SerializeField] private Light lightComponent;
 
     [SerializeField] private Transform target;
     [SerializeField] private float rotationSmoothTime = 0.12f;
@@ -39,11 +39,11 @@ public class Flashlight : MonoBehaviour
     {
         if (turnOnOff)
         {
-            lightComp.range = 5;
+            lightComponent.intensity = 47;
         }
         else
         {
-            lightComp.range = 25;
+            lightComponent.intensity = 5;
         }
         
     }

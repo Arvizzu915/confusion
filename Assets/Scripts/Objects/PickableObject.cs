@@ -22,4 +22,10 @@ public class PickableObject : Interactuable
     {
 
     }
+
+    public virtual void GetPicked()
+    {
+        Flashlight.instance.ChangeToInspectingLight(true);
+        gameObject.SetActive(false);
+    }
 }

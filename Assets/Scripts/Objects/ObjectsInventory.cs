@@ -12,6 +12,7 @@ public class ObjectsInventory : MonoBehaviour
 
     [Header("References")]
     public ItemSlotUI[] slotButtons;
+    public ItemSlotUI currentSlotButton;
     public CanvasGroup selectInputs, addingInputs;
     public TextMeshProUGUI itemName, itemDescription;
 
@@ -166,8 +167,8 @@ public class ObjectsInventory : MonoBehaviour
         }
 
         PlayerDetectInteract.instance.inspectCamera.SetActive(false);
-        
-        currentPickable.gameObject.SetActive(false);
+
+        currentPickable.GetPicked();
         ChangeMode(selectMode);
         CloseMenu();
     }
@@ -200,6 +201,7 @@ public class ObjectsInventory : MonoBehaviour
             if (slotButtons[i].gameObject == selectedObject)
             {
                 selectedIndex = i;
+                currentSlotButton = slotButtons[i];
                 return;
             }
         }
