@@ -15,6 +15,7 @@ public abstract class IInspectionable : Interactuable
     {
         AnalyzingMode.Instance.currentObj = this;
         inspectingCamera.SetActive(true);
+        
     }
 
     public virtual void StopInspecting()
@@ -29,5 +30,20 @@ public abstract class IInspectionable : Interactuable
             gameObject.SetActive(false);
             AnalyzingMode.Instance.ExitAnalyzeMode();
         }
+    }
+
+    public virtual void MoveInputs()
+    {
+
+    }
+
+    public virtual void MoveDirection(Vector2 direction)
+    {
+
+    }
+
+    public virtual void CancelInput()
+    {
+
     }
 }

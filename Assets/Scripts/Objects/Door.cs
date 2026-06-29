@@ -35,8 +35,11 @@ public class Door : Interactuable
 
     private void Awake()
     {
-        trigger.Initialize(this);
-
+        if (trigger != null)
+        {
+           trigger.Initialize(this);
+        }
+       
         JointSpring spring = hinge.spring;
         spring.spring = springStrength;
         spring.damper = springDamper;

@@ -8,6 +8,7 @@ public class AnalyzingMode : MonoBehaviour
     public static AnalyzingMode Instance;
 
     public IInspectionable currentObj;
+    private InputAction move;
 
     private void Awake()
     {
@@ -18,22 +19,36 @@ public class AnalyzingMode : MonoBehaviour
     {
         InputManager.Instance.inputs.Analyze.Return.performed += ExitAnalyze;
         InputManager.Instance.inputs.Analyze.Use.performed += SubmitSelectedSlot;
+        InputManager.Instance.inputs.Analyze.Move.performed += MoveInputs;
+        InputManager.Instance.inputs.Analyze.Move.canceled += CancelInput;
 
-        
+        move = InputManager.Instance.inputs.Playing.Move;
+    }
+
+    private void Update()
+    {
+        if (currentObj == null) return;
+
+        currentObj.MoveDirection(move.ReadValue<Vector2>());
     }
 
     private void OnDisable()
     {
         InputManager.Instance.inputs.Analyze.Return.performed -= ExitAnalyze;
         InputManager.Instance.inputs.Analyze.Use.performed -= SubmitSelectedSlot;
+        InputManager.Instance.inputs.Analyze.Move.performed -= MoveInputs;
+        InputManager.Instance.inputs.Analyze.Move.canceled -= CancelInput;
     }
 
-    public void EnterAnalyzeMode()
+    public void EnterAnalyzeMode(bool openInventory)
     {
         Flashlight.instance.ChangeToInspectingLight(false);
 
-        ObjectsInventory.instance.OpenMenu(null);
-
+        if (openInventory)
+        {
+            ObjectsInventory.instance.OpenMenu(null);
+        }
+        
         InputManager.Instance.SwitchToAnalyze();
         PlayerManager.instance.PlayerUIManager.CanInteract(false, "");
         PlayerDetectInteract.instance.analyzing = true;
@@ -88,5 +103,15 @@ public class AnalyzingMode : MonoBehaviour
 
 
         //Debug.Log("Using item: " + item.itemName);
+    }
+
+    private void MoveInputs(InputAction.CallbackContext ctx)
+    {
+        currentObj.MoveInputs();
+    }
+
+    private void CancelInput(InputAction.CallbackContext ctx)
+    {
+        currentObj.CancelInput();
     }
 }

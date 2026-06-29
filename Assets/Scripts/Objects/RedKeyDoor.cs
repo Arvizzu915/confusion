@@ -10,7 +10,7 @@ public class RedKeyDoor : IInspectionable
     {
         base.Inspect();
 
-        AnalyzingMode.Instance.EnterAnalyzeMode();
+        AnalyzingMode.Instance.EnterAnalyzeMode(true);
     }
 
     public override void UseItem(int itemIndex, ItemSlotUI itemSlot)

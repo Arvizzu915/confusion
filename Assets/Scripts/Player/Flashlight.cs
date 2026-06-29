@@ -43,7 +43,7 @@ public class Flashlight : MonoBehaviour
         }
         else
         {
-            lightComponent.intensity = 5;
+            lightComponent.intensity = 3;
         }
         
     }
