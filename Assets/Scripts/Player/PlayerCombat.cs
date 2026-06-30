@@ -10,9 +10,10 @@ public class PlayerCombat : MonoBehaviour
     public InputManager inputManager;
 
     [Header("Weapon")]
-    public WeaponSO currentWeaponSO = null;
+    public WeaponSO currentWeaponSO = null, bowSO, lighterSO;
     public BowManager bowManager;
-    public GameObject weapon;
+    public GameObject weapon, bow, lighter;
+    public bool lighterObtained = false;
 
     [Header("Bow")]
     public float holdingTime = 0;
@@ -44,6 +45,7 @@ public class PlayerCombat : MonoBehaviour
         inputManager.inputs.Playing.Attack1.canceled += StopHoldingBow;
         inputManager.inputs.Playing.Aim.performed += Aim;
         inputManager.inputs.Playing.Aim.canceled += Aim;
+        inputManager.inputs.Playing.Change.performed += ChangeWeapon;
     }
 
     private void OnDisable()
@@ -52,10 +54,13 @@ public class PlayerCombat : MonoBehaviour
         inputManager.inputs.Playing.Attack1.canceled -= StopHoldingBow;
         inputManager.inputs.Playing.Aim.performed -= Aim;
         inputManager.inputs.Playing.Aim.canceled -= Aim;
+        inputManager.inputs.Playing.Change.performed -= ChangeWeapon;
     }
 
     private void Update()
     {
+        if (currentWeaponSO == null) return;
+
         currentWeaponSO.WeaponUpdate(this, playerManager);
         ShootAimRay();
     }
@@ -96,15 +101,22 @@ public class PlayerCombat : MonoBehaviour
     {
         if (ctx.performed)
         {
-            currentWeaponSO.Aim(playerManager, this);
+            aimingCamera.SetActive(true);
+
+            if (currentWeaponSO != null)
+            {
+                currentWeaponSO.Aim(playerManager, this);
+
+                if (aimCoyoteCoroutine != null)
+                    StopCoroutine(aimCoyoteCoroutine);
+            }
+            
 
             PlayerMovement.instance.StopRunning();
-
-            if (aimCoyoteCoroutine != null)
-                StopCoroutine(aimCoyoteCoroutine);
         }
         else if (ctx.canceled)
         {
+
             StopAiming();
         }
     }
@@ -113,6 +125,8 @@ public class PlayerCombat : MonoBehaviour
     {
         aiming = false;
         aimingCamera.SetActive(false);
+
+        if (currentWeaponSO == null) return;
 
         if (aimCoyoteCoroutine != null)
             StopCoroutine(aimCoyoteCoroutine);
@@ -153,5 +167,29 @@ public class PlayerCombat : MonoBehaviour
         GameObject newWeapon = Instantiate(weapon, weapon.transform);
         newWeapon.transform.SetParent(weapon.transform);
         newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
+
+    private void ChangeWeapon(InputAction.CallbackContext ctx)
+    {
+        if (!lighterObtained) return;
+
+        if (ctx.ReadValue<Vector2>() == Vector2.up)
+        {
+            currentWeaponSO = bowSO;
+            lighter.SetActive(false);
+            bow.SetActive(true);
+        }
+        else if (ctx.ReadValue<Vector2>() == Vector2.down)
+        {
+            currentWeaponSO = lighterSO;
+            lighter.SetActive(true);
+            bow.SetActive(false);
+        }
+        else
+        {
+            currentWeaponSO = null;
+            lighter.SetActive(false);
+            bow.SetActive(false);
+        }
     }
 }

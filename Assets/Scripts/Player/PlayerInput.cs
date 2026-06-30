@@ -208,6 +208,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change"",
+                    ""type"": ""Value"",
+                    ""id"": ""83aeb8f2-ad0c-46bf-a293-e6b7350873c3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -540,6 +549,116 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""599ae73a-0912-42c5-87dd-2327f72395ff"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ef041685-1b65-44bb-9df2-ce19b2877b9d"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fba55209-06fe-4c53-a12c-c3f659adb79c"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6f76925e-c2a9-4503-be25-cead55a081a6"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9125611e-b384-4a20-b6d9-c825d3f4add8"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8abe8fa7-fcff-4833-a356-d1b13da18d23"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""415abf6a-e4b9-4bcd-b8ce-86e2c50c0e20"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""895a01fe-685d-4c22-a2d8-5d44106fe75d"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""21ef2667-cbfc-4875-b01f-45536f25dfbd"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""20791f6c-44e3-4f56-97c2-97d2d61dd03c"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1014,6 +1133,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Playing_Aim = m_Playing.FindAction("Aim", throwIfNotFound: true);
         m_Playing_Inventory = m_Playing.FindAction("Inventory", throwIfNotFound: true);
         m_Playing_Jump = m_Playing.FindAction("Jump", throwIfNotFound: true);
+        m_Playing_Change = m_Playing.FindAction("Change", throwIfNotFound: true);
         // Inspecting
         m_Inspecting = asset.FindActionMap("Inspecting", throwIfNotFound: true);
         m_Inspecting_Zoom = m_Inspecting.FindAction("Zoom", throwIfNotFound: true);
@@ -1127,6 +1247,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Playing_Aim;
     private readonly InputAction m_Playing_Inventory;
     private readonly InputAction m_Playing_Jump;
+    private readonly InputAction m_Playing_Change;
     /// <summary>
     /// Provides access to input actions defined in input action map "Playing".
     /// </summary>
@@ -1190,6 +1311,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Playing/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Playing_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Playing/Change".
+        /// </summary>
+        public InputAction @Change => m_Wrapper.m_Playing_Change;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1255,6 +1380,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Change.started += instance.OnChange;
+            @Change.performed += instance.OnChange;
+            @Change.canceled += instance.OnChange;
         }
 
         /// <summary>
@@ -1305,6 +1433,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Change.started -= instance.OnChange;
+            @Change.performed -= instance.OnChange;
+            @Change.canceled -= instance.OnChange;
         }
 
         /// <summary>
@@ -1812,6 +1943,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Change" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChange(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Inspecting" which allows adding and removing callbacks.

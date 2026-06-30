@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NormalBow", menuName = "Bows/NormalBow")]
+[CreateAssetMenu(fileName = "NormalBow", menuName = "Weapons/NormalBow")]
 public class NormalBowSO : WeaponSO
 {
     public float holdingTimeLimit = 2f;
@@ -81,7 +81,5 @@ public class NormalBowSO : WeaponSO
 
         combat.aiming = true;
         combat.canShootAfterAim = true;
-
-        combat.aimingCamera.SetActive(true);
     }
 }

@@ -117,6 +117,8 @@ public class ObjectsInventory : MonoBehaviour
     {
         InputManager.Instance.SwitchToInventory();
 
+        UpdateItemInfo();
+
         if (selectedItem != null)
         {
             SelectObject(selectedItem);
