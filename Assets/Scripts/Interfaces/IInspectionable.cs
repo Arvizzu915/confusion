@@ -32,7 +32,7 @@ public abstract class IInspectionable : Interactuable
         }
     }
 
-    public virtual void MoveInputs()
+    public virtual void MoveInputs(Vector2 direction)
     {
 
     }
@@ -43,6 +43,11 @@ public abstract class IInspectionable : Interactuable
     }
 
     public virtual void CancelInput()
+    {
+
+    }
+
+    public virtual void Use()
     {
 
     }

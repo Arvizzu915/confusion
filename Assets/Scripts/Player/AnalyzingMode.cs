@@ -22,7 +22,7 @@ public class AnalyzingMode : MonoBehaviour
         InputManager.Instance.inputs.Analyze.Move.performed += MoveInputs;
         InputManager.Instance.inputs.Analyze.Move.canceled += CancelInput;
 
-        move = InputManager.Instance.inputs.Playing.Move;
+        move = InputManager.Instance.inputs.Analyze.Move;
     }
 
     private void Update()
@@ -79,6 +79,8 @@ public class AnalyzingMode : MonoBehaviour
 
     private void SubmitSelectedSlot(InputAction.CallbackContext ctx)
     {
+        currentObj.Use();
+
         if (!ObjectsInventory.instance.menuOpen) return;
 
         GameObject selectedObject = EventSystem.current.currentSelectedGameObject;
@@ -107,7 +109,7 @@ public class AnalyzingMode : MonoBehaviour
 
     private void MoveInputs(InputAction.CallbackContext ctx)
     {
-        currentObj.MoveInputs();
+        currentObj.MoveInputs(ctx.ReadValue<Vector2>());
     }
 
     private void CancelInput(InputAction.CallbackContext ctx)

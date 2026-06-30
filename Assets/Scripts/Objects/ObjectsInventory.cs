@@ -97,6 +97,16 @@ public class ObjectsInventory : MonoBehaviour
         currentMode.OnChangeSlot(this);
     }
 
+    public void SetSelectedIndex(int index)
+    {
+        if (selectedIndex == index)
+            return;
+
+        selectedIndex = index;
+
+        UpdateItemInfo();
+    }
+
     public void OpenInventory()
     {
         ChangeMode(selectMode);

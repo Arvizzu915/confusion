@@ -1,10 +1,13 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlotUI : MonoBehaviour
+public class ItemSlotUI : MonoBehaviour, ISelectHandler
 {
     public Item item;
+    public int index;
 
     public Button button;
 
@@ -84,5 +87,10 @@ public class ItemSlotUI : MonoBehaviour
 
         currentItems += quantity;
         itemCounterText.text = currentItems.ToString();
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        ObjectsInventory.instance.SetSelectedIndex(index);
     }
 }

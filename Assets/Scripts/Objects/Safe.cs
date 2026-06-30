@@ -4,9 +4,16 @@ using UnityEngine;
 public class Safe : IInspectionable
 {
     [SerializeField] private Transform safeLock;
+    [SerializeField] private int[] combination;
+    [SerializeField] private Collider[] coll;
+
+    [SerializeField] private Animator animator;
 
     private bool moving = false, canMove = true;
     private Vector2 movingInput = Vector2.zero;
+
+    private int currentNumber = 0, currentCorrectCombinations = 0;
+    private bool left = true;
 
     private void Update()
     {
@@ -18,7 +25,6 @@ public class Safe : IInspectionable
 
     private IEnumerator MoveSafe(Vector2 direction)
     {
-        
         canMove = false;
 
         Quaternion start = safeLock.localRotation;
@@ -26,18 +32,45 @@ public class Safe : IInspectionable
 
         if (direction.x < 0)
         {
+            left = true;
+
+            if (currentNumber == 0)
+            {
+                currentNumber = 9;
+            }
+            else
+            {
+                currentNumber -= 1;
+            }
+
+            
+
             end = start *
-            Quaternion.Euler(0f, -15f, 0f);
+            Quaternion.Euler(0f, 36f, 0f);
         }
         else
         {
+            
+
+            left = false;
+
+            if (currentNumber == 9)
+            {
+                currentNumber = 0;
+            }
+            else
+            {
+                currentNumber += 1;
+            }
+
             end = start *
-            Quaternion.Euler(0f, 15f, 0f);
+            Quaternion.Euler(0f, -36f, 0f);
         }
 
+        Debug.Log(currentNumber);
+        CheckNumbers();
 
-
-            float timer = 0f;
+        float timer = 0f;
 
         while (timer < 0.2f)
         {
@@ -51,6 +84,7 @@ public class Safe : IInspectionable
         }
 
         safeLock.localRotation = end;
+
 
         canMove = true;
     }
@@ -67,9 +101,10 @@ public class Safe : IInspectionable
         
     }
 
-    public override void MoveInputs()
+    public override void MoveInputs(Vector2 direction)
     {
-        
+        movingInput = direction;
+
         moving = true;
     }
 
@@ -81,5 +116,66 @@ public class Safe : IInspectionable
     public override void CancelInput()
     {
         moving = false;
+    }
+
+    public override void Use()
+    {
+        CheckCombination();
+    }
+
+    private void CheckCombination()
+    {
+        Debug.Log(currentCorrectCombinations);
+
+        if (currentCorrectCombinations >= 3)
+        {
+            OpenSafe();
+        }
+    }
+
+    private void OpenSafe()
+    {
+        animator.SetBool("Open", true);
+        foreach (Collider col in coll)
+        {
+            col.enabled = false;
+        }
+
+        StartCoroutine(ReturnToGameplay());
+    }
+
+    private IEnumerator ReturnToGameplay()
+    {
+        yield return new WaitForSeconds(.5f);
+        AnalyzingMode.Instance.ExitAnalyzeMode();
+    }
+
+    private void CheckNumbers()
+    {
+        if (currentCorrectCombinations == 0)
+        {
+            if (currentNumber == combination[0] && left)
+            {
+                currentCorrectCombinations++;
+            }
+        }
+        else if (currentCorrectCombinations == 1)
+        {
+            if (currentNumber == combination[1] && !left)
+            {
+                currentCorrectCombinations++;
+            }
+        }
+        else if (currentCorrectCombinations == 2)
+        {
+            if (currentNumber == combination[2] && left)
+            {
+                currentCorrectCombinations++;
+            }
+        }
+        else
+        {
+            currentCorrectCombinations = 0;
+        }
     }
 }
