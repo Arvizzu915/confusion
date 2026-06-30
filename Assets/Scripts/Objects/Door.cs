@@ -111,8 +111,12 @@ public class Door : Interactuable
         {
             state = DoorState.Opened;
 
-            while (trigger.PlayerInside)
-                yield return null;
+            if (trigger != null)
+            {
+                while (trigger.PlayerInside)
+                    yield return null;
+            }
+            
 
             yield return new WaitForSeconds(autoCloseDelay);
 
