@@ -146,7 +146,7 @@ public class Safe : IInspectionable
 
     private IEnumerator ReturnToGameplay()
     {
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.2f);
         AnalyzingMode.Instance.ExitAnalyzeMode();
     }
 

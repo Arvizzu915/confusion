@@ -115,6 +115,8 @@ public class ObjectsInventory : MonoBehaviour
 
     public void OpenMenu(Item selectedItem)
     {
+        selectedIndex = 0;
+
         InputManager.Instance.SwitchToInventory();
 
         UpdateItemInfo();

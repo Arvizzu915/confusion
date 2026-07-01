@@ -39,11 +39,11 @@ public class Flashlight : MonoBehaviour
     {
         if (turnOnOff)
         {
-            lightComponent.intensity = 47;
+            lightComponent.intensity = 150;
         }
         else
         {
-            lightComponent.intensity = 3;
+            lightComponent.intensity = 15;
         }
         
     }
