@@ -12,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Weapon")]
     public WeaponSO currentWeaponSO = null, bowSO, lighterSO;
     public BowManager bowManager;
+    public LighterManager lighterManager;
     public GameObject weapon, bow, lighter;
     public bool lighterObtained = false;
 
@@ -41,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
-        inputManager.inputs.Playing.Attack1.performed += TryHoldBow;
+        inputManager.inputs.Playing.Attack1.performed += Use;
         inputManager.inputs.Playing.Attack1.canceled += StopHoldingBow;
         inputManager.inputs.Playing.Aim.performed += Aim;
         inputManager.inputs.Playing.Aim.canceled += Aim;
@@ -50,7 +51,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnDisable()
     {
-        inputManager.inputs.Playing.Attack1.performed -= TryHoldBow;
+        inputManager.inputs.Playing.Attack1.performed -= Use;
         inputManager.inputs.Playing.Attack1.canceled -= StopHoldingBow;
         inputManager.inputs.Playing.Aim.performed -= Aim;
         inputManager.inputs.Playing.Aim.canceled -= Aim;
@@ -84,9 +85,9 @@ public class PlayerCombat : MonoBehaviour
         return aiming || canShootAfterAim;
     }
 
-    public void TryHoldBow(InputAction.CallbackContext ctx)
+    public void Use(InputAction.CallbackContext ctx)
     {
-        holding = true;
+        currentWeaponSO.Use(playerManager ,this);
     }
 
     public void StopHoldingBow(InputAction.CallbackContext ctx)

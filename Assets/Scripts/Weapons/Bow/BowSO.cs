@@ -10,6 +10,8 @@ public class NormalBowSO : WeaponSO
 
     public override void Use(PlayerManager player, PlayerCombat combat)
     {
+        combat.holding = true;
+
         if (!combat.CanShootWithAim()) return;
         if (!combat.canShoot) return;
         if (pulling) return;

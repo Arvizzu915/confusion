@@ -8,7 +8,7 @@ public class ObjectsInventory : MonoBehaviour
 {
     public static ObjectsInventory instance;
 
-    public bool[] keyPieces;
+    public KeyPiece[] keyPieces;
 
     [Header("References")]
     public ItemSlotUI[] slotButtons;
@@ -71,19 +71,6 @@ public class ObjectsInventory : MonoBehaviour
 
             slotButtons[i].SetImage();
         }
-    }
-
-    public bool CheckKeyPiece(int[] indexes)
-    {
-        foreach (int index in indexes)
-        {
-            if (!keyPieces[index])
-            {
-                return false;
-            }
-        }
-
-        return true;
     }
 
     public void SelectSlot(int index)
