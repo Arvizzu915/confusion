@@ -9,6 +9,7 @@ public class Flashlight : MonoBehaviour
 
     [SerializeField] private Transform target;
     [SerializeField] private float rotationSmoothTime = 0.12f;
+    [SerializeField] private int brightLight = 150, lowLight = 10;
 
     private Vector3 angularVelocity;
 
@@ -39,11 +40,11 @@ public class Flashlight : MonoBehaviour
     {
         if (turnOnOff)
         {
-            lightComponent.intensity = 150;
+            lightComponent.intensity = brightLight;
         }
         else
         {
-            lightComponent.intensity = 15;
+            lightComponent.intensity = lowLight;
         }
         
     }
