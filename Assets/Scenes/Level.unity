@@ -24036,10 +24036,10 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 0.9669811, a: 1}
-  m_Intensity: 400
-  m_Range: 32.6
-  m_SpotAngle: 74.06975
-  m_InnerSpotAngle: 74.06975
+  m_Intensity: 220
+  m_Range: 36.8
+  m_SpotAngle: 72.98491
+  m_InnerSpotAngle: 72.98491
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 2
@@ -31222,8 +31222,8 @@ MonoBehaviour:
   lightComponent: {fileID: 1286293743}
   target: {fileID: 1379365331}
   rotationSmoothTime: 0.15
-  brightLight: 450
-  lowLight: 13
+  brightLight: 220
+  lowLight: 10
 --- !u!1 &1784514709
 GameObject:
   m_ObjectHideFlags: 0

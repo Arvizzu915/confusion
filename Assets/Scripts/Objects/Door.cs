@@ -120,7 +120,7 @@ public class Door : Interactuable
 
             yield return new WaitForSeconds(autoCloseDelay);
 
-            if (!trigger.PlayerInside)
+            if (!trigger.PlayerInside && trigger != null)
                 Close();
         }
         else if (movingState == DoorState.Closing)
