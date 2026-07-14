@@ -4,6 +4,7 @@ using UnityEngine;
 public class ArrowSO : ScriptableObject
 {
     public int damage = 1;
+    ProjectileType projectileType = ProjectileType.Pierce;
 
     public virtual void HitObject(Collision collision, ArrowManager flyingArrow)
     {
@@ -20,11 +21,11 @@ public class ArrowSO : ScriptableObject
 
         if (collision.gameObject.TryGetComponent(out IShootable shootable))
         {
-            shootable.GetShot(damage);
+            shootable.GetShot(damage, projectileType);
         }
         else if (hitRb != null && hitRb.TryGetComponent(out IShootable rbShootable))
         {
-            rbShootable.GetShot(damage);
+            rbShootable.GetShot(damage, projectileType);
         }
 
         flyingArrow.ReturnToPool();

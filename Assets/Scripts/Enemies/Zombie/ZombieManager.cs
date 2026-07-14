@@ -42,7 +42,7 @@ public class ZombieManager : Enemy
         currentState.ZombieEnter(this);
     }
 
-    public override void GetShot(int damage)
+    public override void GetShot(int damage, ProjectileType type)
     {
         health -= damage;
 

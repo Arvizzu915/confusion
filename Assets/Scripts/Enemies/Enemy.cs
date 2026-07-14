@@ -5,7 +5,7 @@ public abstract class Enemy : MonoBehaviour, IShootable
 {
     public bool playerInsideRoom;
 
-    public abstract void GetShot(int damage);
+    public abstract void GetShot(int damage, ProjectileType type);
 
     public virtual void SetEnemyInsideRoom(bool value)
     {
