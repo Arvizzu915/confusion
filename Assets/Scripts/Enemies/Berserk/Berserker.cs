@@ -6,7 +6,7 @@ public class Berserker : MonoBehaviour
 {
     [SerializeField] private int health = 4;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     [SerializeField] private float chasingSpeed = 3;
     [SerializeField] private float distanceToAttack = 3;

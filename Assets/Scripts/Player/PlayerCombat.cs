@@ -14,7 +14,7 @@ public class PlayerCombat : MonoBehaviour
     public BowManager bowManager;
     public LighterManager lighterManager;
     public GameObject weapon, bow, lighter;
-    public bool lighterObtained = false;
+    public bool lighterObtained = false, bowObtained = false;
 
     [Header("Bow")]
     public float holdingTime = 0;
@@ -87,6 +87,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void Use(InputAction.CallbackContext ctx)
     {
+        if (currentWeaponSO == null) return;
         currentWeaponSO.Use(playerManager ,this);
     }
 
@@ -170,27 +171,43 @@ public class PlayerCombat : MonoBehaviour
         newWeapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 
+    public void ChangeWeapon(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                currentWeaponSO = bowSO;
+                lighter.SetActive(false);
+                bow.SetActive(true);
+                break;
+            case 1:
+                currentWeaponSO = lighterSO;
+                lighter.SetActive(true);
+                bow.SetActive(false);
+                break;
+            default:
+                currentWeaponSO = null;
+                lighter.SetActive(false);
+                bow.SetActive(false);
+                break;
+        }
+    }
+
     private void ChangeWeapon(InputAction.CallbackContext ctx)
     {
         if (!lighterObtained) return;
 
         if (ctx.ReadValue<Vector2>() == Vector2.up)
         {
-            currentWeaponSO = bowSO;
-            lighter.SetActive(false);
-            bow.SetActive(true);
+            ChangeWeapon(0);
         }
         else if (ctx.ReadValue<Vector2>() == Vector2.down)
         {
-            currentWeaponSO = lighterSO;
-            lighter.SetActive(true);
-            bow.SetActive(false);
+            ChangeWeapon(1);
         }
         else
         {
-            currentWeaponSO = null;
-            lighter.SetActive(false);
-            bow.SetActive(false);
+            ChangeWeapon(3);
         }
     }
 }
