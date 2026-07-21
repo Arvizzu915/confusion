@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Door : Interactuable
 {
+    private bool berserkDoor = false;
+
     private enum DoorState
     {
         Closed,
@@ -33,6 +35,8 @@ public class Door : Interactuable
     private Coroutine movementRoutine;
     private bool openPositive;
 
+    public bool locked = false;
+
     private void Awake()
     {
         if (trigger != null)
@@ -53,6 +57,17 @@ public class Door : Interactuable
     {
         if (state == DoorState.Opening || state == DoorState.Closing)
             return;
+
+        if (locked)
+        {
+            if (berserkDoor)
+            {
+                BerserkDetector.Instance.ActivateBerserker();
+                berserkDoor = false;
+            }
+            //make locked sound
+            return;
+        }
 
         switch (state)
         {

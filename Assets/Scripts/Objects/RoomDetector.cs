@@ -7,17 +7,28 @@ public class RoomDetector : MonoBehaviour
 
     public Enemy[] enemyList;
 
+    [SerializeField] private List<NoiseMaker> noiseMakers = new();
+
+    public IReadOnlyList<NoiseMaker> NoiseMakers => noiseMakers;
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player"))
+            return;
 
-        if (!other.CompareTag("Player")) return;
+        playerInside = true;
 
         SetEnemiesPlayerInside(true);
+
+        SoundManager.Instance.SetCurrentRoom(this);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player"))
+            return;
+
+        playerInside = false;
 
         SetEnemiesPlayerInside(false);
     }
@@ -28,5 +39,21 @@ public class RoomDetector : MonoBehaviour
         {
             enemyList[i].SetEnemyInsideRoom(value);
         }
+    }
+
+    public void RegisterNoiseMaker(NoiseMaker noiseMaker)
+    {
+        if (!noiseMakers.Contains(noiseMaker))
+            noiseMakers.Add(noiseMaker);
+    }
+
+    public void UnregisterNoiseMaker(NoiseMaker noiseMaker)
+    {
+        noiseMakers.Remove(noiseMaker);
+    }
+
+    public virtual void DetectPlayer()
+    {
+
     }
 }

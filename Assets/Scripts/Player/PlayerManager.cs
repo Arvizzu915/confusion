@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     public Transform pocketPosition;
     public CanvasGroup selectingInputs;
 
+    public bool keyToMechanicsObtained = false;
+
     private void Awake()
     {
         instance = this;
