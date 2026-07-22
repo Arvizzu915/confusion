@@ -16,11 +16,7 @@ public class RoomDetector : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        playerInside = true;
-
-        SetEnemiesPlayerInside(true);
-
-        SoundManager.Instance.SetCurrentRoom(this);
+        DetectPlayer();
     }
 
     private void OnTriggerExit(Collider other)
@@ -54,6 +50,10 @@ public class RoomDetector : MonoBehaviour
 
     public virtual void DetectPlayer()
     {
+        playerInside = true;
 
+        SetEnemiesPlayerInside(true);
+
+        SoundManager.Instance.SetCurrentRoom(this);
     }
 }

@@ -505,6 +505,131 @@ Transform:
   - {fileID: 1514258331}
   m_Father: {fileID: 1393793969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &33134421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 33134422}
+  - component: {fileID: 33134426}
+  - component: {fileID: 33134425}
+  - component: {fileID: 33134424}
+  - component: {fileID: 33134423}
+  m_Layer: 0
+  m_Name: Trigger (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &33134422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33134421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.49, y: 0, z: 9.64}
+  m_LocalScale: {x: 2.9176893, y: 2.09106, z: 5.4043584}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 832635853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33134423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33134421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c32770ccf689cd4696315a51e564ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
+--- !u!65 &33134424
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33134421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &33134425
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33134421}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &33134426
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33134421}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &37123128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,6 +2317,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 134436724}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -2755,6 +2881,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 142241520}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -2960,6 +3087,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 164107117}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -3662,6 +3790,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 207420237}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -5251,6 +5380,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 257574716}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -9305,6 +9435,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 503409246}
   trigger: {fileID: 2118088209}
   nudgeAngle: 37
@@ -9703,6 +9834,7 @@ Transform:
   - {fileID: 1166536125}
   - {fileID: 1252553107}
   - {fileID: 2085095539}
+  - {fileID: 1632824908}
   m_Father: {fileID: 1393793969}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &528293584
@@ -13546,6 +13678,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 719501511}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -13786,7 +13919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &728458548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14101,7 +14234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d7d9ed1498b3f4ba2fc9fe0a06e672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BerserkEye
-  berserkerScript: {fileID: 0}
+  berserkerScript: {fileID: 797764762}
 --- !u!54 &744645411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14589,8 +14722,9 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 1
   hinge: {fileID: 753913671}
-  trigger: {fileID: 0}
+  trigger: {fileID: 1098409050}
   nudgeAngle: 15
   openAngle: 90
   closedAngleTolerance: 2
@@ -15437,6 +15571,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 810226320}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -16161,6 +16296,7 @@ Transform:
   - {fileID: 929023720}
   - {fileID: 1793598881}
   - {fileID: 1300806346}
+  - {fileID: 33134422}
   m_Father: {fileID: 1393793969}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &846041795
@@ -17735,6 +17871,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 891439308}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -18660,6 +18797,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 937338678}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -21108,7 +21246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1077804883
 Transform:
   m_ObjectHideFlags: 0
@@ -21136,7 +21274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0709aaa90d25c4283fd1594211af97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BerserkCover
-  berserkerScript: {fileID: 0}
+  berserkerScript: {fileID: 797764762}
 --- !u!54 &1077804885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -21192,7 +21330,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077804882}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -21682,6 +21820,131 @@ Transform:
   - {fileID: 75926961}
   - {fileID: 2051746125}
   m_Father: {fileID: 1393793969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1098409049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1098409054}
+  - component: {fileID: 1098409053}
+  - component: {fileID: 1098409052}
+  - component: {fileID: 1098409051}
+  - component: {fileID: 1098409050}
+  m_Layer: 0
+  m_Name: Trigger (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1098409050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098409049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c32770ccf689cd4696315a51e564ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
+--- !u!65 &1098409051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098409049}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1098409052
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098409049}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1098409053
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098409049}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1098409054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098409049}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 14.76, y: 0, z: 11.49}
+  m_LocalScale: {x: 2.917686, y: 2.0910592, z: 5.4043627}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589384843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1099808836
 GameObject:
@@ -23946,8 +24209,8 @@ Transform:
   m_GameObject: {fileID: 1252553106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 16.5, y: 3.797492, z: 9.6}
-  m_LocalScale: {x: 1.2999998, y: 7.5, z: 5}
+  m_LocalPosition: {x: 16.4472, y: 3.797492, z: 9.6}
+  m_LocalScale: {x: 1.2999998, y: 7.5, z: 5.1055}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 518923946}
@@ -25045,8 +25308,9 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1300806347}
-  trigger: {fileID: 0}
+  trigger: {fileID: 33134423}
   nudgeAngle: 15
   openAngle: 90
   closedAngleTolerance: 2
@@ -25250,6 +25514,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1316727503}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -27773,6 +28038,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1478930154}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -28396,6 +28662,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1514258332}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -28840,6 +29107,7 @@ Transform:
   - {fileID: 641810225}
   - {fileID: 1909187185}
   - {fileID: 1228687771}
+  - {fileID: 1098409054}
   - {fileID: 753913670}
   m_Father: {fileID: 1393793969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29801,6 +30069,131 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1632824907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1632824908}
+  - component: {fileID: 1632824912}
+  - component: {fileID: 1632824911}
+  - component: {fileID: 1632824910}
+  - component: {fileID: 1632824909}
+  m_Layer: 0
+  m_Name: Trigger (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1632824908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632824907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.41, y: 0, z: 9.7}
+  m_LocalScale: {x: 2.9176893, y: 2.09106, z: 5.4043584}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 518923946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1632824909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632824907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c32770ccf689cd4696315a51e564ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
+--- !u!65 &1632824910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632824907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1632824911
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632824907}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1632824912
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632824907}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1653970422
 GameObject:
   m_ObjectHideFlags: 0
@@ -31750,7 +32143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd499ed6b33f4f419a306b3686361a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BerserkBody
-  berserkerScript: {fileID: 0}
+  berserkerScript: {fileID: 797764762}
 --- !u!54 &1760686506
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32243,6 +32636,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1773643429}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -33822,6 +34216,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1822785292}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -36080,6 +36475,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 1931882336}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -37741,6 +38137,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 2004770163}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -39372,6 +39769,7 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 2051746126}
   trigger: {fileID: 0}
   nudgeAngle: 15
@@ -40058,8 +40456,9 @@ MonoBehaviour:
   interactText: Open
   canInteract: 1
   inspectable: 0
+  berserkDoor: 0
   hinge: {fileID: 2085095540}
-  trigger: {fileID: 0}
+  trigger: {fileID: 1632824909}
   nudgeAngle: 15
   openAngle: 90
   closedAngleTolerance: 2
@@ -42167,6 +42566,7 @@ GameObject:
   - component: {fileID: 4970123808287907220}
   - component: {fileID: 7625775759480996141}
   - component: {fileID: 7625775759480996143}
+  - component: {fileID: 7625775759480996144}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -42284,6 +42684,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnalyzingMode
   currentObj: {fileID: 0}
+--- !u!114 &7625775759480996144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732114798269321057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb3b8372dfdae2409cb4776546692e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  timeBetweenSounds: {x: 8, y: 20}
 --- !u!114 &8033320522707342316
 MonoBehaviour:
   m_ObjectHideFlags: 0

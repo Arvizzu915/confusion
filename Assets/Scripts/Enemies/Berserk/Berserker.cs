@@ -18,11 +18,15 @@ public class Berserker : MonoBehaviour
 
     private GameObject eyeCover;
 
+    private void OnEnable()
+    {
+        StartCoroutine(Initializing());
+    }
+
+
     private void Start()
     {
         playerPos = PlayerManager.instance.transform;
-
-        StartCoroutine(Initializing());
     }
 
     private void Update()
@@ -89,6 +93,7 @@ public class Berserker : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         agent.speed = chasingSpeed;
+        chasing = true;
     }
 
     private IEnumerator Attack()

@@ -14,6 +14,8 @@ public class BerserkDetector : RoomDetector
 
     public override void DetectPlayer()
     {
+        base.DetectPlayer();
+
         if (PlayerManager.instance.keyToMechanicsObtained)
         {
             foreach (Door door in doors)
